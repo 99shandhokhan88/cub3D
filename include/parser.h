@@ -108,7 +108,8 @@ int	border_check(char **copy_map);
 int	right_check(char **copy_map);
 int	check_correct_walls(char **map, int x, int y, int type);
 int	find_path(int i, int j, char **map, int type);
-int	check_around(int i, int j, char **map, int type);
+int	around_checker(char **map, int kind, int i, int j);
+
 
 
 

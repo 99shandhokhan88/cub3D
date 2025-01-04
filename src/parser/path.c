@@ -1,12 +1,12 @@
 
 #include "../include/cub3D.h"
 
-int	check_around(int i, int j, char **map, int type)
+int	around_checker(char **map, int kind, int i, int j)
 {
 	if (map[i][j] == '\0' || map[i][j] == '0' || map[i][j] == 'N' \
 	|| map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
 		return (1);
-	if (type == UP || type == DOWN)
+	if (kind == UP || kind == DOWN)
 	{
 		if (map[i][j + 1] != '\0' && map[i][j + 1] == '0')
 			return (1);
@@ -23,27 +23,28 @@ int	check_around(int i, int j, char **map, int type)
 	return (0);
 }
 
-int	find_path(int i, int j, char **map, int type)
+
+int	find_path(int i, int j, char **map, int kind)
 {
 	int	len_max;
 
 	len_max = matrix_len(map);
-	if (check_around(i, j, map, type))
+	if (around_checker(map, kind, i, j) == 1)
 		return (1);
 	if (map[i][j] == ' ')
 	{
 		map[i][j] = '2';
-		if (type == UP)
-			if ((i + 1 > len_max) && find_path(i + 1, j, map, type))
+		if (kind == UP)
+			if ((i + 1 > len_max) && find_path(i + 1, j, map, kind))
 				return (1);
-		if (type == DOWN)
-			if ((i - 1 < 0) && find_path(i - 1, j, map, type))
+		if (kind == DOWN)
+			if ((i - 1 < 0) && find_path(i - 1, j, map, kind))
 				return (1);
-		if (type == LEFT)
-			if (find_path(i, j + 1, map, type))
+		if (kind == LEFT)
+			if (find_path(i, j + 1, map, kind))
 				return (1);
-		if (type == RIGHT)
-			if (find_path(i, j - 1, map, type))
+		if (kind == RIGHT)
+			if (find_path(i, j - 1, map, kind))
 				return (1);
 	}
 	return (0);
