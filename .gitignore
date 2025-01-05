@@ -1,0 +1,8 @@
+.vscode/
+*.swo
+*.swp
+*.out
+*.o
+*.a
+cub3D
+maps/
