@@ -47,9 +47,7 @@ typedef struct s_game
 {
 	t_colors	*colors;
 	t_map		*map;
-	t_params	*params;
 	t_textures	*textures;
-	int flag;
 }	t_game;
 
 typedef struct s_params
