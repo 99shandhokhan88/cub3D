@@ -1,4 +1,3 @@
-
 #include "../include/cub3D.h"
 
 void render_floor_ceiling(unsigned int *img_data, t_colors *colors)
@@ -42,16 +41,13 @@ void render_floor_ceiling(unsigned int *img_data, t_colors *colors)
 }
 
 
-int	draw(void *param)
+int	draw(t_params *params)
 {
-	t_params	*params;
-
-	params = (t_params *)param;
-if (!params || !params->mlx || !params->window || !params->img || !params->img_data)
-{
-    printf("Error: Invalid parameters in draw function\n");
-    return (1);
-}
+	if (!params || !params->mlx || !params->window || !params->img || !params->img_data)
+	{
+		printf("Error: Invalid parameters in draw function\n");
+		return (1);
+	}
 
 	set_to_zero(params->img_data, 0,
 		SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(unsigned int));

@@ -109,7 +109,7 @@ t_texture	*select_wall_texture(t_params *params, t_ray *ray);
 int		calculate_tex_x(t_wall_slice_data *data, t_ray *ray);
 void	draw_wall_slice(t_params *params, t_ray *ray, int x, int y);
 void	render_floor_ceiling(unsigned int *img_data, t_colors *colors);
-int		draw(void *param);
+int		draw(t_params *params);
 int		my_error(char **av);
 int		close_window(t_params *params);
 void	free_textures(t_params *params);

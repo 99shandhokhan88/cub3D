@@ -1,4 +1,3 @@
-
 #include "include/cub3D.h"
 
 char	*copy_str(char *copy, const char *original, int n)
