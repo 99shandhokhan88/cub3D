@@ -5,17 +5,18 @@ PARSER_DIR = src/parser
 OBJ_DIR = obj
 INC_DIR = include
 MLX_DIR = minilibx
+LIBFT_DIR = libft
 
-SRC = $(wildcard $(RAYCASTING_DIR)/*.c) \
-      $(wildcard $(PARSER_DIR)/*.c) \
-      main.c
+SRC =	$(wildcard $(RAYCASTING_DIR)/*.c) \
+		$(wildcard $(PARSER_DIR)/*.c) \
+		main.c
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
-IFLAGS = -I $(INC_DIR) -I $(MLX_DIR)
-LFLAGS = -L $(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
+IFLAGS = -I $(INC_DIR) -I $(MLX_DIR) -I $(LIBFT_DIR)
+LFLAGS = -L $(MLX_DIR) -lmlx -L $(LIBFT_DIR) -lft -lXext -lX11 -lm -lbsd
 
 RED = \033[0;31m
 GREEN = \033[0;32m
@@ -41,7 +42,7 @@ define DOOM_BANNER
 	@printf "$(RESET)"
 endef
 
-all: $(OBJ_DIR) $(MLX_DIR)/libmlx.a $(NAME)
+all: $(OBJ_DIR) $(MLX_DIR)/libmlx.a $(LIBFT_DIR)/libft.a $(NAME)
 	@printf "$(GREEN)▀▄▀▄▀▄ WELCOME TO HELL ▄▀▄▀▄▀$(RESET)\n"
 
 $(NAME): $(OBJ)
@@ -65,6 +66,10 @@ $(MLX_DIR)/libmlx.a:
 	@printf "\033[3B$(RESET)"
 	@$(MAKE) -C $(MLX_DIR) > /dev/null 2>&1
 
+$(LIBFT_DIR)/libft.a:
+	@printf "$(CYAN)>> Building Libft...$(RESET)\n"
+	@$(MAKE) -C $(LIBFT_DIR) > /dev/null 2>&1
+
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@printf "$(BLUE)⚡ $(RESET)$(notdir $<)\n"
@@ -78,10 +83,12 @@ clean:
 	@printf "$(RED)>> Exorcising Demons...$(RESET)\n"
 	@rm -rf $(OBJ_DIR)
 	@$(MAKE) -C $(MLX_DIR) clean > /dev/null 2>&1
+	@$(MAKE) -C $(LIBFT_DIR) clean > /dev/null 2>&1
 
 fclean: clean
 	@printf "$(RED)>> Sealing Hell Gates...$(RESET)\n"
 	@rm -f $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean > /dev/null 2>&1
 
 re: fclean all
 
