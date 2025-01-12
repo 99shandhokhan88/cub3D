@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-void calculate_wall_slice_dimensions(t_ray *ray, t_wall_slice_data *data)
+void	calculate_wall_slice_dimensions(t_ray *ray, t_wall_slice_data *data)
 {
 	data->lineHeight = (int)(SCREEN_HEIGHT / ray->perpWallDist);
 	data->drawStart = -(data->lineHeight) / 2 + SCREEN_HEIGHT / 2;
@@ -11,9 +11,9 @@ void calculate_wall_slice_dimensions(t_ray *ray, t_wall_slice_data *data)
 		data->drawEnd = SCREEN_HEIGHT - 1;
 }
 
-double calculate_wall_x(t_params *params, t_ray *ray)
+double	calculate_wall_x(t_params *params, t_ray *ray)
 {
-	double wall_x;
+	double	wall_x;
 
 	if (ray->side == 0)
 		wall_x = params->posY + ray->perpWallDist * ray->rayDirY;
@@ -38,9 +38,9 @@ t_texture *select_wall_texture(t_params *params, t_ray *ray)
 	}
 }
 
-int calculate_tex_x(t_wall_slice_data *data, t_ray *ray)
+int	calculate_tex_x(t_wall_slice_data *data, t_ray *ray)
 {
-	int tex_x;
+	int	tex_x;
 
 	tex_x = (int)(data->wallX * data->current_texture->width);
 	if ((ray->side == 0 && ray->rayDirX > 0) || (ray->side == 1 && ray->rayDirY < 0))
@@ -48,13 +48,13 @@ int calculate_tex_x(t_wall_slice_data *data, t_ray *ray)
 	return (tex_x);
 }
 
-void draw_wall_slice(t_params *params, t_ray *ray, int x, int y)
+void	draw_wall_slice(t_params *params, t_ray *ray, int x, int y)
 {
-	t_wall_slice_data data;
-	double step;
-	double tex_pos;
-	int tex_y;
-	unsigned int color;
+	t_wall_slice_data	data;
+	double				step;
+	double				tex_pos;
+	int					tex_y;
+	unsigned int		color;
 
 	calculate_wall_slice_dimensions(ray, &data);
 	data.wallX = calculate_wall_x(params, ray);

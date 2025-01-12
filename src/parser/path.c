@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-int around_checker(char **map, int kind, int i, int j)
+int	around_checker(char **map, int kind, int i, int j)
 {
 	if (map[i][j] == '\0' || map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
 		return (1);
@@ -21,9 +21,9 @@ int around_checker(char **map, int kind, int i, int j)
 	return (0);
 }
 
-int find_path(int i, int j, char **map, int kind)
+int	find_path(int i, int j, char **map, int kind)
 {
-	int len_max;
+	int	len_max;
 
 	len_max = matrix_len(map);
 	if (around_checker(map, kind, i, j) == 1)
@@ -47,7 +47,7 @@ int find_path(int i, int j, char **map, int kind)
 	return (0);
 }
 
-int check_correct_walls(char **map, int x, int y, int type)
+int	check_correct_walls(char **map, int x, int y, int type)
 {
 	if (type == UP && find_path(x, y, map, type) == 1)
 	{
@@ -72,9 +72,9 @@ int check_correct_walls(char **map, int x, int y, int type)
 	return (0);
 }
 
-int right_check(char **copy_map)
+int	right_check(char **copy_map)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (copy_map == NULL || copy_map[0] == NULL)
@@ -92,10 +92,10 @@ int right_check(char **copy_map)
 	return (0);
 }
 
-int border_check(char **copy_map)
+int	border_check(char **copy_map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;

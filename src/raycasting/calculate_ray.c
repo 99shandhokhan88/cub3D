@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-void initialize_ray(t_params *params, t_ray *ray, int x)
+void	initialize_ray(t_params *params, t_ray *ray, int x)
 {
 	ray->cameraX = 2 * x / (double)SCREEN_WIDTH - 1;
 	ray->rayDirX = params->dirX + params->planeX * ray->cameraX;
@@ -17,7 +17,7 @@ void initialize_ray(t_params *params, t_ray *ray, int x)
 		ray->deltaDistY = fabs(1 / ray->rayDirY);
 }
 
-void calculate_step_and_side(t_params *params, t_ray *ray)
+void	calculate_step_and_side(t_params *params, t_ray *ray)
 {
 	if (ray->rayDirX < 0)
 	{
@@ -41,7 +41,7 @@ void calculate_step_and_side(t_params *params, t_ray *ray)
 	}
 }
 
-void calculate_ray(t_params *params, t_ray *ray, int x)
+void	calculate_ray(t_params *params, t_ray *ray, int x)
 {
 	initialize_ray(params, ray, x);
 	calculate_step_and_side(params, ray);

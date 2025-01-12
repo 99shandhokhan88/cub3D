@@ -1,10 +1,10 @@
 #include "cub3D.h"
 
-void check_cub(t_file **init, char *file)
+void	check_cub(t_file **init, char *file)
 {
-	int fd;
-	t_file *new;
-	char *line_map;
+	int		fd;
+	t_file	*new;
+	char	*line_map;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)

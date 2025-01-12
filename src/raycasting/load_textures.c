@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-void load_single_texture(t_params *params, t_texture *texture, char *path)
+void	load_single_texture(t_params *params, t_texture *texture, char *path)
 {
 	if (!path || !path[0])
 	{
@@ -26,7 +26,7 @@ void load_single_texture(t_params *params, t_texture *texture, char *path)
 	}
 }
 
-void load_textures(t_params *params)
+void	load_textures(t_params *params)
 {
 	if (!params || !params->game || !params->game->textures)
 	{

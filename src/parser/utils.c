@@ -1,9 +1,9 @@
 #include "cub3D.h"
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char *test;
-	size_t i;
+	char	*test;
+	size_t	i;
 
 	i = 0;
 	if (s == NULL)
@@ -27,7 +27,7 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	return (test);
 }
 
-char *null_dest(char *dst)
+char	*null_dest(char *dst)
 {
 	dst = (char *)malloc(1 * sizeof(char));
 	if (!dst)
@@ -36,11 +36,11 @@ char *null_dest(char *dst)
 	return (dst);
 }
 
-char *strjoin(char *dst, char *s)
+char	*strjoin(char *dst, char *s)
 {
-	char *res;
-	int i;
-	int j;
+	char	*res;
+	int		i;
+	int		j;
 
 	if (!s)
 		return (NULL);
@@ -63,9 +63,9 @@ char *strjoin(char *dst, char *s)
 	return (res);
 }
 
-int skip_spaces(int i, t_parser *parsed, t_file *init)
+int	skip_spaces(int i, t_parser *parsed, t_file *init)
 {
-	int temp;
+	int	temp;
 
 	temp = i;
 	while (init->line[i] && init->line[i] != ',' &&
@@ -80,9 +80,9 @@ int skip_spaces(int i, t_parser *parsed, t_file *init)
 	return (i);
 }
 
-void free_map2(char **map)
+void	free_map2(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (map)
@@ -97,9 +97,9 @@ void free_map2(char **map)
 	}
 }
 
-int matrix_len(char **map)
+int	matrix_len(char **map)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (map[len])
@@ -107,7 +107,7 @@ int matrix_len(char **map)
 	return (len);
 }
 
-int is_empty(char c)
+int	is_empty(char c)
 {
 	if (c && c != ' ' && c != '	' && c != '1' && c != '\n')
 		return (1);

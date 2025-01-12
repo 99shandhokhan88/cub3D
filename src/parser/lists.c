@@ -1,8 +1,8 @@
 #include "cub3D.h"
 
-t_file *lstnew(char *line)
+t_file	*lstnew(char *line)
 {
-	t_file *new;
+	t_file	*new;
 
 	new = (t_file *)malloc(sizeof(t_file));
 	if (new == NULL)
@@ -12,7 +12,7 @@ t_file *lstnew(char *line)
 	return (new);
 }
 
-t_file *lstlast(t_file *lst)
+t_file	*lstlast(t_file *lst)
 {
 	if (lst == NULL)
 		return (lst);
@@ -21,9 +21,9 @@ t_file *lstlast(t_file *lst)
 	return (lst);
 }
 
-void lstadd_back(t_file **lst, t_file *new)
+void	lstadd_back(t_file **lst, t_file *new)
 {
-	t_file *p;
+	t_file	*p;
 
 	if (lst == NULL || new == NULL)
 		return;

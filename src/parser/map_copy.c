@@ -1,10 +1,10 @@
 #include "cub3D.h"
 
-int find_max_line(char **map, int *i)
+int	find_max_line(char **map, int *i)
 {
-	int j;
-	int check;
-	int k;
+	int	j;
+	int	check;
+	int	k;
 
 	check = 0;
 	j = 0;
@@ -24,7 +24,7 @@ int find_max_line(char **map, int *i)
 	return (check);
 }
 
-int line_copy(t_map_copy *map_copy, int i, int j, char **map)
+int	line_copy(t_map_copy *map_copy, int i, int j, char **map)
 {
 	while (++map_copy->i < i - 1)
 	{
@@ -49,9 +49,9 @@ int line_copy(t_map_copy *map_copy, int i, int j, char **map)
 	return (0);
 }
 
-void last_line_copy(t_map_copy *map_copy, int i, char **map, int k)
+void	last_line_copy(t_map_copy *map_copy, int i, char **map, int k)
 {
-	int j;
+	int	j;
 
 	j = -1;
 	map_copy->copy_map[i] = malloc((1 + k) * sizeof(char));
@@ -71,9 +71,9 @@ void last_line_copy(t_map_copy *map_copy, int i, char **map, int k)
 	map_copy->copy_map[i][j] = 0;
 }
 
-char **manage_spaces(char **map, int i, int j)
+char	**manage_spaces(char **map, int i, int j)
 {
-	t_map_copy copy_map;
+	t_map_copy	copy_map;
 
 	if (i == 0)
 		return (NULL);
@@ -89,11 +89,11 @@ char **manage_spaces(char **map, int i, int j)
 	return (copy_map.copy_map);
 }
 
-char **map_copy(char **map)
+char	**map_copy(char **map)
 {
-	int i;
-	int check;
-	char **copy_map;
+	int		i;
+	int		check;
+	char	**copy_map;
 
 	i = 0;
 	check = find_max_line(map, &i);

@@ -1,9 +1,9 @@
 #include "cub3D.h"
 
-int direction(t_parser *parsed, t_file *init, char *dir, char **path)
+int	direction(t_parser *parsed, t_file *init, char *dir, char **path)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = 0;
 	len = 0;
@@ -29,7 +29,7 @@ int direction(t_parser *parsed, t_file *init, char *dir, char **path)
 	return (0);
 }
 
-int fill_ceiling(t_parser *parsed, t_file *init, int *index)
+int	fill_ceiling(t_parser *parsed, t_file *init, int *index)
 {
 	parsed->ceiling.r = ft_atoi(&init->line[*index]);
 	if (parsed->ceiling.r > 255 || parsed->ceiling.r < 0 || !ft_isdigit(init->line[*index]))
@@ -48,7 +48,7 @@ int fill_ceiling(t_parser *parsed, t_file *init, int *index)
 	return (0);
 }
 
-int fill_floor(t_parser *parsed, t_file *init, int *index)
+int	fill_floor(t_parser *parsed, t_file *init, int *index)
 {
 	parsed->floor.r = ft_atoi(&init->line[*index]);
 	if (parsed->floor.r > 255 || parsed->floor.r < 0 || !ft_isdigit(init->line[*index]))
@@ -67,9 +67,9 @@ int fill_floor(t_parser *parsed, t_file *init, int *index)
 	return (0);
 }
 
-void the_checker(t_parser *parsed, t_file *init, int i)
+void	the_checker(t_parser *parsed, t_file *init, int i)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (init->line[i] != '\n')
@@ -83,9 +83,9 @@ void the_checker(t_parser *parsed, t_file *init, int i)
 	}
 }
 
-int background_fill(t_parser *parsed, t_file *init, char platform, int *flag)
+int	background_fill(t_parser *parsed, t_file *init, char platform, int *flag)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (init->line && init->line[i] == ' ')
@@ -111,12 +111,12 @@ int background_fill(t_parser *parsed, t_file *init, char platform, int *flag)
 	return (0);
 }
 
-void struct_filler(t_parser *parsed, t_file *init)
+void	struct_filler(t_parser *parsed, t_file *init)
 {
-	int check;
-	int count;
-	int ceiling;
-	int floor;
+	int	check;
+	int	count;
+	int	ceiling;
+	int	floor;
 
 	count = 0;
 	ceiling = 0;

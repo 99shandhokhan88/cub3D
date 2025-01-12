@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-void advance_ray(t_ray *ray)
+void	advance_ray(t_ray *ray)
 {
 	if (ray->sideDistX < ray->sideDistY)
 	{
@@ -16,7 +16,7 @@ void advance_ray(t_ray *ray)
 	}
 }
 
-int check_hit(t_params *params, t_ray *ray)
+int	check_hit(t_params *params, t_ray *ray)
 {
 	if (ray->mapX >= 0 && ray->mapY >= 0 && ray->mapX < params->game->map->width && ray->mapY < params->game->map->height)
 	{
@@ -28,9 +28,9 @@ int check_hit(t_params *params, t_ray *ray)
 	return (0);
 }
 
-void progress_ray(t_params *params, t_ray *ray)
+void	progress_ray(t_params *params, t_ray *ray)
 {
-	int hit;
+	int	hit;
 
 	hit = 0;
 	while (!hit)
@@ -40,7 +40,7 @@ void progress_ray(t_params *params, t_ray *ray)
 	}
 }
 
-void calculate_wall_distance(t_ray *ray)
+void	calculate_wall_distance(t_ray *ray)
 {
 	if (ray->side == 0)
 		ray->perpWallDist = ray->sideDistX - ray->deltaDistX;
@@ -48,7 +48,7 @@ void calculate_wall_distance(t_ray *ray)
 		ray->perpWallDist = ray->sideDistY - ray->deltaDistY;
 }
 
-void perform_dda(t_params *params, t_ray *ray)
+void	perform_dda(t_params *params, t_ray *ray)
 {
 	progress_ray(params, ray);
 	calculate_wall_distance(ray);

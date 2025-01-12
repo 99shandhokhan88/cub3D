@@ -1,9 +1,9 @@
 #include "cub3D.h"
 
-void rotate_player(t_params *params, double rot_speed)
+void	rotate_player(t_params *params, double rot_speed)
 {
-	double old_dir_x;
-	double old_plane_x;
+	double	old_dir_x;
+	double	old_plane_x;
 
 	old_dir_x = params->dirX;
 	old_plane_x = params->planeX;
@@ -13,13 +13,13 @@ void rotate_player(t_params *params, double rot_speed)
 	params->planeY = old_plane_x * sin(rot_speed) + params->planeY * cos(rot_speed);
 }
 
-void move_forward(t_params *params,
-				  double move_speed, double new_pos_x, double new_pos_y)
+void	move_forward(t_params *params,
+				double move_speed, double new_pos_x, double new_pos_y)
 {
-	int check_x1;
-	int check_y1;
-	int check_x2;
-	int check_y2;
+	int	check_x1;
+	int	check_y1;
+	int	check_x2;
+	int	check_y2;
 
 	new_pos_x = (params->posX + params->dirX * move_speed) - 0.0042;
 	new_pos_y = (params->posY + params->dirY * move_speed) - 0.0042;
@@ -38,13 +38,13 @@ void move_forward(t_params *params,
 	}
 }
 
-void move_backward(t_params *params,
-				   double move_speed, double new_pos_x, double new_pos_y)
+void	move_backward(t_params *params,
+				double move_speed, double new_pos_x, double new_pos_y)
 {
-	int check_x1;
-	int check_y1;
-	int check_x2;
-	int check_y2;
+	int	check_x1;
+	int	check_y1;
+	int	check_x2;
+	int	check_y2;
 
 	new_pos_x = (params->posX - params->dirX * move_speed) + 0.0042;
 	new_pos_y = (params->posY - params->dirY * move_speed) + 0.0042;
@@ -63,13 +63,13 @@ void move_backward(t_params *params,
 	}
 }
 
-void move_left(t_params *params,
-			   double move_speed, double new_pos_x, double new_pos_y)
+void	move_left(t_params *params,
+				double move_speed, double new_pos_x, double new_pos_y)
 {
-	int check_x1;
-	int check_y1;
-	int check_x2;
-	int check_y2;
+	int	check_x1;
+	int	check_y1;
+	int	check_x2;
+	int	check_y2;
 
 	new_pos_x = params->posX + (-params->dirY) * move_speed;
 	new_pos_y = params->posY + (params->dirX) * move_speed;
@@ -88,13 +88,13 @@ void move_left(t_params *params,
 	}
 }
 
-void move_right(t_params *params,
+void	move_right(t_params *params,
 				double move_speed, double new_pos_x, double new_pos_y)
 {
-	int check_x1;
-	int check_y1;
-	int check_x2;
-	int check_y2;
+	int	check_x1;
+	int	check_y1;
+	int	check_x2;
+	int	check_y2;
 
 	new_pos_x = params->posX + (params->dirY) * move_speed;
 	new_pos_y = params->posY + (-params->dirX) * move_speed;

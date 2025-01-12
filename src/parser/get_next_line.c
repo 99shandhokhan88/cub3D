@@ -1,8 +1,8 @@
 #include "cub3D.h"
 
-int set_char(char *str)
+int	set_char(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -16,10 +16,10 @@ int set_char(char *str)
 	return (0);
 }
 
-char *put_stash(int fd, char *stat)
+char	*put_stash(int fd, char *stat)
 {
-	int val;
-	char *buf;
+	int		val;
+	char	*buf;
 
 	val = 1;
 	buf = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
@@ -45,11 +45,11 @@ char *put_stash(int fd, char *stat)
 	return (stat);
 }
 
-char *get_line(char *stat)
+char	*get_line(char *stat)
 {
-	int i;
-	int len;
-	char *line;
+	int		i;
+	int		len;
+	char	*line;
 
 	i = 0;
 	len = 0;
@@ -71,11 +71,11 @@ char *get_line(char *stat)
 	return (line);
 }
 
-char *rest_stash(char *stat)
+char	*rest_stash(char *stat)
 {
-	int i;
-	int start;
-	char *remain;
+	int		i;
+	int		start;
+	char	*remain;
 
 	i = 0;
 	if (stat[i] == '\0')
@@ -100,10 +100,10 @@ char *rest_stash(char *stat)
 	return (remain);
 }
 
-char *get_next_line_map(int fd)
+char	*get_next_line_map(int fd)
 {
-	static char *stat;
-	char *line;
+	static char	*stat;
+	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

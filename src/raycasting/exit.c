@@ -1,14 +1,14 @@
 #include "cub3D.h"
 
-int close_window(t_params *params)
+int	close_window(t_params *params)
 {
 	ft_exit(params, 0);
 	return (0);
 }
 
-void free_map(t_map *map)
+void	free_map(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!map)
@@ -19,7 +19,7 @@ void free_map(t_map *map)
 	free(map);
 }
 
-void free_textures(t_params *params)
+void	free_textures(t_params *params)
 {
 	if (params->textures.north.img)
 		mlx_destroy_image(params->mlx,
@@ -37,7 +37,7 @@ void free_textures(t_params *params)
 		mlx_destroy_image(params->mlx, params->img);
 }
 
-void ft_exit(t_params *params, int code)
+void	ft_exit(t_params *params, int code)
 {
 	if (params->mlx)
 	{

@@ -1,9 +1,9 @@
 #include "cub3D.h"
 
-int move_player(int key, t_params *params)
+int	move_player(int key, t_params *params)
 {
-	double move_speed;
-	double rot_speed;
+	double	move_speed;
+	double	rot_speed;
 
 	move_speed = 0.1;
 	rot_speed = 0.05;

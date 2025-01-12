@@ -1,9 +1,9 @@
 #include "cub3D.h"
 
-void check_file(char *file)
+void	check_file(char *file)
 {
-	char *ext;
-	size_t len;
+	char	*ext;
+	size_t	len;
 
 	ext = ft_strrchr(file, '.');
 	if (ext == 0)
@@ -21,9 +21,9 @@ void check_file(char *file)
 	}
 }
 
-t_parser *parse_init(void)
+t_parser	*parse_init(void)
 {
-	t_parser *parsed;
+	t_parser	*parsed;
 
 	parsed = malloc(sizeof(t_parser));
 	if (parsed == NULL)
@@ -52,7 +52,7 @@ t_parser *parse_init(void)
 	return (parsed);
 }
 
-void free_parse(t_parser *parsed)
+void	free_parse(t_parser *parsed)
 {
 	free(parsed->textures_parse.north);
 	free(parsed->textures_parse.south);
@@ -63,7 +63,7 @@ void free_parse(t_parser *parsed)
 	parsed = 0;
 }
 
-void check_inside_char(t_parser *parse)
+void	check_inside_char(t_parser *parse)
 {
 	if (parse->textures_parse.north[0] == '\0')
 	{
@@ -91,10 +91,10 @@ void check_inside_char(t_parser *parse)
 	}
 }
 
-t_parser *parser(char **av)
+t_parser	*parser(char **av)
 {
-	t_file *init;
-	t_parser *parsed_map;
+	t_file		*init;
+	t_parser	*parsed_map;
 
 	init = 0;
 	check_file(av[1]);

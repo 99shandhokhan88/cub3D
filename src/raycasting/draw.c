@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-void clamp_color(t_color *color)
+void	clamp_color(t_color *color)
 {
 	if (color->r > 255)
 		color->r = 255;
@@ -18,11 +18,11 @@ void clamp_color(t_color *color)
 		color->b = 0;
 }
 
-void render_floor_ceiling(unsigned int *img_data, t_colors *colors)
+void	render_floor_ceiling(unsigned int *img_data, t_colors *colors)
 {
-	int y, x;
-	unsigned int floor_color;
-	unsigned int ceiling_color;
+	int				y, x;
+	unsigned int	floor_color;
+	unsigned int	ceiling_color;
 
 	y = 0;
 
@@ -53,7 +53,7 @@ void render_floor_ceiling(unsigned int *img_data, t_colors *colors)
 	}
 }
 
-int draw(t_params *params)
+int	draw(t_params *params)
 {
 	if (!params || !params->mlx || !params->window || !params->img || !params->img_data)
 	{
