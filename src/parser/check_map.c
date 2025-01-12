@@ -1,5 +1,27 @@
-
 #include "../include/cub3D.h"
+
+// void	print_map_non_printable(char **matrix)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	while (matrix[i])
+// 	{
+// 		j = 0;
+// 		printf("'");
+// 		while (matrix[i][j])
+// 		{
+// 			if (matrix[i][j] == '\n')
+// 				printf("\\n");
+// 			else
+// 				printf("%c", matrix[i][j]);
+// 			j++;
+// 		}
+// 		printf("'\n");
+// 		i++;
+// 	}
+// }
 
 int	parsing_map(t_parser *parsed)
 {
@@ -13,6 +35,7 @@ int	parsing_map(t_parser *parsed)
 		printf("Malloc error\n");
 		return (1);
 	}
+	// print_map_non_printable(matrix_copy);
 	error = check_inside(parsed, matrix_copy);
 	if (error == 1 || parsed->player_position == 0)
 	{

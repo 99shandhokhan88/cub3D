@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   load_textures.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vzashev <vzashev@student.42roma.it>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 00:56:52 by vzashev           #+#    #+#             */
-/*   Updated: 2024/12/30 18:45:33 by vzashev          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/cub3D.h"
 
 void	load_single_texture(t_params *params, t_texture *texture, char *path)
@@ -46,11 +34,11 @@ void	load_textures(t_params *params)
 		ft_exit(params, 1);
 	}
 	load_single_texture(params,
-		&params->textures.north, params->game->textures->north_path);
+		&params->textures.north, params->game->textures->north.path);
 	load_single_texture(params,
-		&params->textures.south, params->game->textures->south_path);
+		&params->textures.south, params->game->textures->south.path);
 	load_single_texture(params,
-		&params->textures.east, params->game->textures->east_path);
+		&params->textures.east, params->game->textures->east.path);
 	load_single_texture(params,
-		&params->textures.west, params->game->textures->west_path);
+		&params->textures.west, params->game->textures->west.path);
 }

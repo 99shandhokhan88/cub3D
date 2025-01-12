@@ -54,10 +54,10 @@ void transfer_parsed_data(t_params *params, t_parser *parsed_map)
 	params->game->colors->floor[2] = parsed_map->floor.blue;
 
 	// Transfer texture paths
-	copy_str(params->game->textures->north_path, parsed_map->textures_parse.north, 256);
-	copy_str(params->game->textures->south_path, parsed_map->textures_parse.south, 256);
-	copy_str(params->game->textures->east_path, parsed_map->textures_parse.east, 256);
-	copy_str(params->game->textures->west_path, parsed_map->textures_parse.west, 256);
+	copy_str(params->game->textures->north.path, parsed_map->textures_parse.north, 256);
+	copy_str(params->game->textures->south.path, parsed_map->textures_parse.south, 256);
+	copy_str(params->game->textures->east.path, parsed_map->textures_parse.east, 256);
+	copy_str(params->game->textures->west.path, parsed_map->textures_parse.west, 256);
 
 	// Set initial player position and direction
 	for (int i = 0; i < params->game->map->height; i++)
@@ -141,10 +141,10 @@ int init_params2(t_params *params)
 	params->textures.west.img = NULL;
 
 	// Set texture paths to empty strings
-	params->textures.east_path[0] = '\0';
-	params->textures.north_path[0] = '\0';
-	params->textures.south_path[0] = '\0';
-	params->textures.west_path[0] = '\0';
+	params->textures.east.path[0] = '\0';
+	params->textures.north.path[0] = '\0';
+	params->textures.south.path[0] = '\0';
+	params->textures.west.path[0] = '\0';
 
 	// Set initial player position and direction
 	params->posX = 0.0;
@@ -196,8 +196,8 @@ int	main(int ac, char **av)
 	printf("napoli\n");
 	// TRANSFER PARSED DATA TO RAYCASTING STRUCTURES
 	transfer_parsed_data(&params, parsed_map);
-	params.mlx = mlx_init();
-	params.window = mlx_new_window(params.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
+	// params.mlx = mlx_init();
+	// params.window = mlx_new_window(params.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	free_parse(parsed_map);
 	load_textures(&params);
 	mlx_hook(params.window, 2, 1L << 0, move_player, &params);

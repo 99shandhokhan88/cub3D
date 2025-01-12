@@ -15,32 +15,29 @@ typedef struct s_colors
 
 typedef struct s_texture
 {
+	void			*img;
 	unsigned int	*addr;
+	char			path[256];
 	int				bits_per_pixel;
 	int				endian;
-	int				height;
-	void			*img;
-	int				size_line;
 	int				width;
+	int				height;
+	int				size_line;
 }	t_texture;
 
 typedef struct s_map
 {
 	int	**grid;
-	int	height;
 	int	width;
+	int	height;
 }	t_map;
 
 typedef struct s_textures
 {
 	t_texture	east;
-	char		east_path[256];
 	t_texture	north;
-	char		north_path[256];
 	t_texture	south;
-	char		south_path[256];
 	t_texture	west;
-	char		west_path[256];
 }	t_textures;
 
 typedef struct s_game
