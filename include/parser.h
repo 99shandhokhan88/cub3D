@@ -16,9 +16,9 @@ typedef struct s_file
 
 typedef struct s_color
 {
-	int		red;
-	int		green;
-	int		blue;
+	int		r;
+	int		g;
+	int		b;
 }	t_color;
 
 typedef struct s_textures_parse

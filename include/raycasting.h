@@ -7,10 +7,17 @@ typedef struct s_textures	t_textures;
 typedef struct s_game		t_game;
 typedef struct s_params		t_params;
 
+// typedef struct s_color
+// {
+// 	int		r;
+// 	int		g;
+// 	int		b;
+// }	t_color;
+
 typedef struct s_colors
 {
-	int	ceiling[3];
-	int	floor[3];
+	t_color	ceiling;
+	t_color	floor;
 }	t_colors;
 
 typedef struct s_texture

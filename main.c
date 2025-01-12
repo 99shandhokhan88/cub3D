@@ -1,8 +1,8 @@
 #include "include/cub3D.h"
 
-char	*copy_str(char *copy, const char *original, int n)
+char *copy_str(char *copy, const char *original, int n)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (original[i] && i < n)
@@ -18,7 +18,6 @@ char	*copy_str(char *copy, const char *original, int n)
 void transfer_parsed_data(t_params *params, t_parser *parsed_map)
 {
 	int index = 0;
-
 
 	// Allocate memory for game, map, colors, and textures
 	params->game = malloc(sizeof(t_game));
@@ -45,13 +44,13 @@ void transfer_parsed_data(t_params *params, t_parser *parsed_map)
 	}
 
 	// Transfer color data
-	params->game->colors->ceiling[0] = parsed_map->ceiling.red;
-	params->game->colors->ceiling[1] = parsed_map->ceiling.green;
-	params->game->colors->ceiling[2] = parsed_map->ceiling.blue;
+	params->game->colors->ceiling.r = parsed_map->ceiling.r;
+	params->game->colors->ceiling.g = parsed_map->ceiling.g;
+	params->game->colors->ceiling.b = parsed_map->ceiling.b;
 
-	params->game->colors->floor[0] = parsed_map->floor.red;
-	params->game->colors->floor[1] = parsed_map->floor.green;
-	params->game->colors->floor[2] = parsed_map->floor.blue;
+	params->game->colors->floor.r = parsed_map->floor.r;
+	params->game->colors->floor.g = parsed_map->floor.g;
+	params->game->colors->floor.b = parsed_map->floor.b;
 
 	// Transfer texture paths
 	copy_str(params->game->textures->north.path, parsed_map->textures_parse.north, 256);
@@ -64,31 +63,38 @@ void transfer_parsed_data(t_params *params, t_parser *parsed_map)
 	{
 		for (int j = 0; j < params->game->map->width; j++)
 		{
-			if (parsed_map->map[i][j] == 'N' || parsed_map->map[i][j] == 'S'
-				|| parsed_map->map[i][j] == 'E' || parsed_map->map[i][j] == 'W')
-				{
-					params->posX = i + 0.5;
-					params->posY = j + 0.5;
+			if (parsed_map->map[i][j] == 'N' || parsed_map->map[i][j] == 'S' || parsed_map->map[i][j] == 'E' || parsed_map->map[i][j] == 'W')
+			{
+				params->posX = i + 0.5;
+				params->posY = j + 0.5;
 
 				// Set initial direction and plane based on player orientation
 				switch (parsed_map->map[i][j])
 				{
-					case 'N':
-						params->dirX = -1; params->dirY = 0;
-						params->planeX = 0; params->planeY = 0.66;
-						break;
-					case 'S':
-						params->dirX = 1; params->dirY = 0;
-						params->planeX = 0; params->planeY = -0.66;
-						break;
-					case 'E':
-						params->dirX = 0; params->dirY = 1;
-						params->planeX = 0.66; params->planeY = 0;
-						break;
-					case 'W':
-						params->dirX = 0; params->dirY = -1;
-						params->planeX = -0.66; params->planeY = 0;
-						break;
+				case 'N':
+					params->dirX = -1;
+					params->dirY = 0;
+					params->planeX = 0;
+					params->planeY = 0.66;
+					break;
+				case 'S':
+					params->dirX = 1;
+					params->dirY = 0;
+					params->planeX = 0;
+					params->planeY = -0.66;
+					break;
+				case 'E':
+					params->dirX = 0;
+					params->dirY = 1;
+					params->planeX = 0.66;
+					params->planeY = 0;
+					break;
+				case 'W':
+					params->dirX = 0;
+					params->dirY = -1;
+					params->planeX = -0.66;
+					params->planeY = 0;
+					break;
 				}
 				break;
 			}
@@ -153,9 +159,9 @@ int init_params2(t_params *params)
 	params->dirY = 0.0;
 	params->planeX = 0.0;
 	params->planeY = 0.0;
-	params->bits_per_pixel = 32; // Typically 32-bit per pixel for RGB
+	params->bits_per_pixel = 32;		  // Typically 32-bit per pixel for RGB
 	params->size_line = SCREEN_WIDTH * 4; // Assuming 32 bits per pixel
-	params->endian = 0; // Usually 0 for little-endian systems
+	params->endian = 0;					  // Usually 0 for little-endian systems
 
 	// Initialize the game structure
 	params->game = malloc(sizeof(t_game));
@@ -166,18 +172,17 @@ int init_params2(t_params *params)
 	}
 
 	// Initialize the colors structure
-	params->colors.ceiling[0] = 0;
-	params->colors.ceiling[1] = 0;
-	params->colors.ceiling[2] = 0;
-	params->colors.floor[0] = 0;
-	params->colors.floor[1] = 0;
-	params->colors.floor[2] = 0;
+	params->colors.ceiling.r = 0;
+	params->colors.ceiling.g = 0;
+	params->colors.ceiling.b = 0;
+	params->colors.floor.r = 0;
+	params->colors.floor.g = 0;
+	params->colors.floor.b = 0;
 
 	return (0);
 }
 
-
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
 	t_parser *parsed_map;
 	t_params params;

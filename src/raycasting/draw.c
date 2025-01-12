@@ -1,5 +1,23 @@
 #include "cub3D.h"
 
+void clamp_color(t_color *color)
+{
+	if (color->r > 255)
+		color->r = 255;
+	if (color->r < 0)
+		color->r = 0;
+
+	if (color->g > 255)
+		color->g = 255;
+	if (color->g < 0)
+		color->g = 0;
+
+	if (color->b > 255)
+		color->b = 255;
+	if (color->b < 0)
+		color->b = 0;
+}
+
 void render_floor_ceiling(unsigned int *img_data, t_colors *colors)
 {
 	int y, x;
@@ -9,26 +27,16 @@ void render_floor_ceiling(unsigned int *img_data, t_colors *colors)
 	y = 0;
 
 	// Clamping the color components to ensure they are within the 0-255 range
-	for (int i = 0; i < 3; i++)
-	{
-		if (colors->ceiling[i] > 255)
-			colors->ceiling[i] = 255;
-		if (colors->ceiling[i] < 0)
-			colors->ceiling[i] = 0;
-
-		if (colors->floor[i] > 255)
-			colors->floor[i] = 255;
-		if (colors->floor[i] < 0)
-			colors->floor[i] = 0;
-	}
+	clamp_color(&colors->ceiling);
+	clamp_color(&colors->floor);
 
 	// Construct color values (0xRRGGBB format)
-	floor_color = (colors->floor[0] << 16) | (colors->floor[1] << 8) | colors->floor[2];
-	ceiling_color = (colors->ceiling[0] << 16) | (colors->ceiling[1] << 8) | colors->ceiling[2];
+	floor_color = (colors->floor.r << 16) | (colors->floor.g << 8) | colors->floor.b;
+	ceiling_color = (colors->ceiling.r << 16) | (colors->ceiling.g << 8) | colors->ceiling.b;
 
 	// Debugging prints
-	// printf("Ceiling color: R=%d, G=%d, B=%d\n", colors->ceiling[0], colors->ceiling[1], colors->ceiling[2]);
-	// printf("Floor color: R=%d, G=%d, B=%d\n", colors->floor[0], colors->floor[1], colors->floor[2]);
+	// printf("Ceiling color: R=%d, G=%d, B=%d\n", colors->ceiling.r, colors->ceiling.g, colors->ceiling.b);
+	// printf("Floor color: R=%d, G=%d, B=%d\n", colors->floor.r, colors->floor.g, colors->floor.b);
 
 	while (y < SCREEN_HEIGHT)
 	{

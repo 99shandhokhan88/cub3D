@@ -37,12 +37,12 @@ t_parser *parse_init(void)
 	parsed->textures_parse.west = NULL;
 
 	// Initialize colors
-	parsed->floor.red = 0;
-	parsed->floor.green = 0;
-	parsed->floor.blue = 0;
-	parsed->ceiling.red = 0;
-	parsed->ceiling.green = 0;
-	parsed->ceiling.blue = 0;
+	parsed->floor.r = 0;
+	parsed->floor.g = 0;
+	parsed->floor.b = 0;
+	parsed->ceiling.r = 0;
+	parsed->ceiling.g = 0;
+	parsed->ceiling.b = 0;
 
 	parsed->player_position = 0;
 	parsed->map = NULL;

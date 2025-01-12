@@ -31,18 +31,18 @@ int direction(t_parser *parsed, t_file *init, char *dir, char **path)
 
 int fill_ceiling(t_parser *parsed, t_file *init, int *index)
 {
-	parsed->ceiling.red = ft_atoi(&init->line[*index]);
-	if (parsed->ceiling.red > 255 || parsed->ceiling.red < 0 || !ft_isdigit(init->line[*index]))
+	parsed->ceiling.r = ft_atoi(&init->line[*index]);
+	if (parsed->ceiling.r > 255 || parsed->ceiling.r < 0 || !ft_isdigit(init->line[*index]))
 		parser_errors(parsed, "Wrong red code\n");
 
 	*index = skip_spaces(*index, parsed, init);
-	parsed->ceiling.green = ft_atoi(&init->line[*index]);
-	if (parsed->ceiling.green > 255 || parsed->ceiling.green < 0 || !ft_isdigit(init->line[*index]))
+	parsed->ceiling.g = ft_atoi(&init->line[*index]);
+	if (parsed->ceiling.g > 255 || parsed->ceiling.g < 0 || !ft_isdigit(init->line[*index]))
 		parser_errors(parsed, "Wrong green code\n");
 
 	*index = skip_spaces(*index, parsed, init);
-	parsed->ceiling.blue = ft_atoi(&init->line[*index]);
-	if (parsed->ceiling.blue > 255 || parsed->ceiling.blue < 0 || !ft_isdigit(init->line[*index]))
+	parsed->ceiling.b = ft_atoi(&init->line[*index]);
+	if (parsed->ceiling.b > 255 || parsed->ceiling.b < 0 || !ft_isdigit(init->line[*index]))
 		parser_errors(parsed, "Wrong blue code\n");
 
 	return (0);
@@ -50,18 +50,18 @@ int fill_ceiling(t_parser *parsed, t_file *init, int *index)
 
 int fill_floor(t_parser *parsed, t_file *init, int *index)
 {
-	parsed->floor.red = ft_atoi(&init->line[*index]);
-	if (parsed->floor.red > 255 || parsed->floor.red < 0 || !ft_isdigit(init->line[*index]))
+	parsed->floor.r = ft_atoi(&init->line[*index]);
+	if (parsed->floor.r > 255 || parsed->floor.r < 0 || !ft_isdigit(init->line[*index]))
 		parser_errors(parsed, "Wrong red code\n");
 
 	*index = skip_spaces(*index, parsed, init);
-	parsed->floor.green = ft_atoi(&init->line[*index]);
-	if (parsed->floor.green > 255 || parsed->floor.green < 0 || !ft_isdigit(init->line[*index]))
+	parsed->floor.g = ft_atoi(&init->line[*index]);
+	if (parsed->floor.g > 255 || parsed->floor.g < 0 || !ft_isdigit(init->line[*index]))
 		parser_errors(parsed, "Wrong green code\n");
 
 	*index = skip_spaces(*index, parsed, init);
-	parsed->floor.blue = ft_atoi(&init->line[*index]);
-	if (parsed->floor.blue > 255 || parsed->floor.blue < 0 || !ft_isdigit(init->line[*index]))
+	parsed->floor.b = ft_atoi(&init->line[*index]);
+	if (parsed->floor.b > 255 || parsed->floor.b < 0 || !ft_isdigit(init->line[*index]))
 		parser_errors(parsed, "Wrong blue code\n");
 
 	return (0);
