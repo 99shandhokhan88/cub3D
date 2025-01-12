@@ -1,4 +1,4 @@
-#include "../include/cub3D.h"
+#include "cub3D.h"
 
 // void	print_map_non_printable(char **matrix)
 // {
@@ -23,10 +23,10 @@
 // 	}
 // }
 
-int	parsing_map(t_parser *parsed)
+int parsing_map(t_parser *parsed)
 {
-	char	**matrix_copy;
-	int		error;
+	char **matrix_copy;
+	int error;
 
 	matrix_copy = map_copy(parsed->map);
 	if (matrix_copy == NULL || matrix_copy[0] == NULL)

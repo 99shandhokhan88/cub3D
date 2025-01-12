@@ -1,10 +1,9 @@
+#include "cub3D.h"
 
-#include "../include/cub3D.h"
-
-int	back_slash_trimmer(t_file *init)
+int back_slash_trimmer(t_file *init)
 {
-	t_file	*trimmed;
-	t_file	*tmp;
+	t_file *trimmed;
+	t_file *tmp;
 
 	trimmed = init;
 	if (!trimmed)
@@ -30,9 +29,9 @@ int	back_slash_trimmer(t_file *init)
 	return (0);
 }
 
-int	size_lst(t_file *lst)
+int size_lst(t_file *lst)
 {
-	int	check;
+	int check;
 
 	check = 0;
 	while (lst != NULL)
@@ -43,7 +42,7 @@ int	size_lst(t_file *lst)
 	return (check);
 }
 
-void	init_empty(t_file *init)
+void init_empty(t_file *init)
 {
 	if (back_slash_trimmer(init) == 1)
 	{

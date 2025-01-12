@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   perform_dda.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vzashev <vzashev@student.42roma.it>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/08 01:04:43 by vzashev           #+#    #+#             */
-/*   Updated: 2024/12/30 18:45:45 by vzashev          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "cub3D.h"
 
-#include "../include/cub3D.h"
-
-void	advance_ray(t_ray *ray)
+void advance_ray(t_ray *ray)
 {
 	if (ray->sideDistX < ray->sideDistY)
 	{
@@ -28,11 +16,9 @@ void	advance_ray(t_ray *ray)
 	}
 }
 
-int	check_hit(t_params *params, t_ray *ray)
+int check_hit(t_params *params, t_ray *ray)
 {
-	if (ray->mapX >= 0 && ray->mapY >= 0
-		&& ray->mapX < params->game->map->width
-		&& ray->mapY < params->game->map->height)
+	if (ray->mapX >= 0 && ray->mapY >= 0 && ray->mapX < params->game->map->width && ray->mapY < params->game->map->height)
 	{
 		if (params->game->map->grid[ray->mapX][ray->mapY] == 1)
 			return (1);
@@ -42,9 +28,9 @@ int	check_hit(t_params *params, t_ray *ray)
 	return (0);
 }
 
-void	progress_ray(t_params *params, t_ray *ray)
+void progress_ray(t_params *params, t_ray *ray)
 {
-	int	hit;
+	int hit;
 
 	hit = 0;
 	while (!hit)
@@ -54,7 +40,7 @@ void	progress_ray(t_params *params, t_ray *ray)
 	}
 }
 
-void	calculate_wall_distance(t_ray *ray)
+void calculate_wall_distance(t_ray *ray)
 {
 	if (ray->side == 0)
 		ray->perpWallDist = ray->sideDistX - ray->deltaDistX;
@@ -62,7 +48,7 @@ void	calculate_wall_distance(t_ray *ray)
 		ray->perpWallDist = ray->sideDistY - ray->deltaDistY;
 }
 
-void	perform_dda(t_params *params, t_ray *ray)
+void perform_dda(t_params *params, t_ray *ray)
 {
 	progress_ray(params, ray);
 	calculate_wall_distance(ray);

@@ -1,9 +1,9 @@
-#include "../include/cub3D.h"
+#include "cub3D.h"
 
-void	raycasting(t_params *params)
+void raycasting(t_params *params)
 {
-	int		x;
-	t_ray	ray;
+	int x;
+	t_ray ray;
 
 	x = 0;
 	if (!params || !params->game || !params->game->map || !params->img_data)

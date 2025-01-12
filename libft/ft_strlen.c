@@ -6,15 +6,15 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:44:47 by flo-dolc          #+#    #+#             */
-/*   Updated: 2024/01/08 19:49:58 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:31:58 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	while (str[len])

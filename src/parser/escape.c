@@ -1,26 +1,25 @@
+#include "cub3D.h"
 
-#include "../include/cub3D.h"
-
-int	my_error(char **av)
+int my_error(char **av)
 {
 	printf(RED BOLD "ERROR: wrong arguments\n" RESET);
 	printf("Usage: %s <filename>.cub\n", av[0]);
-	exit (1);
+	exit(1);
 }
 
-void	parsing_handle_escape(t_file *file)
+void parsing_handle_escape(t_file *file)
 {
 	printf(RED BOLD "Error parser\n" RESET);
 	free_struct(file);
 	exit(EXIT_FAILURE);
 }
 
-void	free_struct(t_file *init)
+void free_struct(t_file *init)
 {
-	t_file	*temp;
+	t_file *temp;
 
 	if (init == NULL)
-		return ;
+		return;
 	while (init->next)
 	{
 		temp = init->next;
@@ -34,9 +33,9 @@ void	free_struct(t_file *init)
 	free(init);
 }
 
-void	parser_errors(t_parser *parsed, char *message)
+void parser_errors(t_parser *parsed, char *message)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	if (parsed != NULL)

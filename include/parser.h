@@ -83,18 +83,10 @@ int			right_check(char **copy_map);
 int			check_correct_walls(char **map, int x, int y, int type);
 int			find_path(int i, int j, char **map, int type);
 int			around_checker(char **map, int kind, int i, int j);
+int			size_lst(t_file *lst);
 
 // libft functions
-char		*ft_strrchr(char const *s, int c);
-size_t		len_str(const char *str);
-int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*get_next_line_map(int fd);
 char		*strjoin(char *dst, char *s);
-int			size_lst(t_file *lst);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
-int			my_atoi(const char *str);
-int			ft_isdigit(int c);
-int			file_len(t_file *file);
-char		*ft_strdup(const char *s);
 
 #endif

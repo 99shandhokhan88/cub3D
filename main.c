@@ -37,7 +37,7 @@ void transfer_parsed_data(t_params *params, t_parser *parsed_map)
 		params->game->map->grid[i] = malloc(sizeof(int) * params->game->map->width);
 		for (int j = 0; j < params->game->map->width; j++)
 		{
-			if (j < (int)len_str(parsed_map->map[i]))
+			if (j < (int)ft_strlen(parsed_map->map[i]))
 				params->game->map->grid[i][j] = parsed_map->map[i][j] == '1' ? 1 : 0;
 			else
 				params->game->map->grid[i][j] = 0;

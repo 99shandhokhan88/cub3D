@@ -1,7 +1,6 @@
+#include "cub3D.h"
 
-#include "../include/cub3D.h"
-
-int	check_pos(char c, t_parser *parsed)
+int check_pos(char c, t_parser *parsed)
 {
 	if (c == 'N' && parsed->player_position == 0)
 		parsed->player_position = NORTH;
@@ -16,11 +15,11 @@ int	check_pos(char c, t_parser *parsed)
 	return (0);
 }
 
-int	corner_check(char **map, int i, int j)
+int corner_check(char **map, int i, int j)
 {
-	int	maxj;
+	int maxj;
 
-	maxj = len_str(map[i]);
+	maxj = ft_strlen(map[i]);
 	if (i + 1 < matrix_len(map) && j - 1 > 0)
 		if (is_empty(map[i + 1][j - 1]))
 			return (1);
@@ -36,11 +35,11 @@ int	corner_check(char **map, int i, int j)
 	return (0);
 }
 
-int	check_space_inside(char **map, int i, int j)
+int check_space_inside(char **map, int i, int j)
 {
-	int	maxj;
+	int maxj;
 
-	maxj = len_str(map[i]);
+	maxj = ft_strlen(map[i]);
 	if (i + 1 < matrix_len(map))
 		if (is_empty(map[i + 1][j]))
 			return (1);
@@ -58,10 +57,10 @@ int	check_space_inside(char **map, int i, int j)
 	return (0);
 }
 
-int	check_inside(t_parser *parsed, char **copy_map)
+int check_inside(t_parser *parsed, char **copy_map)
 {
-	int		i;
-	int		j;
+	int i;
+	int j;
 
 	i = 0;
 	if (copy_map == NULL || copy_map[0] == NULL)

@@ -1,12 +1,11 @@
+#include "cub3D.h"
 
-#include "../include/cub3D.h"
-
-void	fill_map(t_parser *parsed, t_file *init)
+void fill_map(t_parser *parsed, t_file *init)
 {
-	int		i;
-	char	**map;
+	int i;
+	char **map;
 
-	i = file_len(init);
+	i = size_lst(init);
 	map = malloc(sizeof(char *) * (i + 1));
 	if (map == NULL)
 		parser_errors(parsed, "Error malloc");
@@ -25,4 +24,3 @@ void	fill_map(t_parser *parsed, t_file *init)
 	}
 	parsed->map = map;
 }
-

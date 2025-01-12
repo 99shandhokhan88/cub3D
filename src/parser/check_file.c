@@ -1,11 +1,10 @@
+#include "cub3D.h"
 
-#include "../include/cub3D.h"
-
-void	check_cub(t_file **init, char *file)
+void check_cub(t_file **init, char *file)
 {
-	int		fd;
-	t_file	*new;
-	char	*line_map;
+	int fd;
+	t_file *new;
+	char *line_map;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -25,10 +24,10 @@ void	check_cub(t_file **init, char *file)
 		lstadd_back(init, new);
 		line_map = get_next_line_map(fd);
 	}
-	//if (errno != 0)
+	// if (errno != 0)
 	//{
 	//	printf("BARIIIII\n");
 	//	parsing_handle_escape(*init);
-	//}
+	// }
 	close(fd);
 }

@@ -1,16 +1,15 @@
+#include "cub3D.h"
 
-#include "../include/cub3D.h"
-
-int	direction(t_parser *parsed, t_file *init, char *dir, char **path)
+int direction(t_parser *parsed, t_file *init, char *dir, char **path)
 {
-	int	i;
-	int	len;
+	int i;
+	int len;
 
 	i = 0;
 	len = 0;
 	while (init->line && init->line[i] == ' ')
 		i++;
-	if (ft_strncmp(&init->line[i], dir, len_str(dir)) == 0)
+	if (ft_strncmp(&init->line[i], dir, ft_strlen(dir)) == 0)
 	{
 		i += 2;
 		while (init->line[i] == ' ')
@@ -32,51 +31,45 @@ int	direction(t_parser *parsed, t_file *init, char *dir, char **path)
 
 int fill_ceiling(t_parser *parsed, t_file *init, int *index)
 {
-    parsed->ceiling.red = my_atoi(&init->line[*index]);
-    if (parsed->ceiling.red > 255 || parsed->ceiling.red < 0 \
-        || !ft_isdigit(init->line[*index]))
-        parser_errors(parsed, "Wrong red code\n");
-    
-    *index = skip_spaces(*index, parsed, init);
-    parsed->ceiling.green = my_atoi(&init->line[*index]);
-    if (parsed->ceiling.green > 255 || parsed->ceiling.green < 0 \
-        || !ft_isdigit(init->line[*index]))
-        parser_errors(parsed, "Wrong green code\n");
-    
-    *index = skip_spaces(*index, parsed, init);
-    parsed->ceiling.blue = my_atoi(&init->line[*index]);
-    if (parsed->ceiling.blue > 255 || parsed->ceiling.blue < 0 \
-        || !ft_isdigit(init->line[*index]))
-        parser_errors(parsed, "Wrong blue code\n");
-    
-    return (0);
+	parsed->ceiling.red = ft_atoi(&init->line[*index]);
+	if (parsed->ceiling.red > 255 || parsed->ceiling.red < 0 || !ft_isdigit(init->line[*index]))
+		parser_errors(parsed, "Wrong red code\n");
+
+	*index = skip_spaces(*index, parsed, init);
+	parsed->ceiling.green = ft_atoi(&init->line[*index]);
+	if (parsed->ceiling.green > 255 || parsed->ceiling.green < 0 || !ft_isdigit(init->line[*index]))
+		parser_errors(parsed, "Wrong green code\n");
+
+	*index = skip_spaces(*index, parsed, init);
+	parsed->ceiling.blue = ft_atoi(&init->line[*index]);
+	if (parsed->ceiling.blue > 255 || parsed->ceiling.blue < 0 || !ft_isdigit(init->line[*index]))
+		parser_errors(parsed, "Wrong blue code\n");
+
+	return (0);
 }
 
 int fill_floor(t_parser *parsed, t_file *init, int *index)
 {
-    parsed->floor.red = my_atoi(&init->line[*index]);
-    if (parsed->floor.red > 255 || parsed->floor.red < 0 \
-        || !ft_isdigit(init->line[*index]))
-        parser_errors(parsed, "Wrong red code\n");
-    
-    *index = skip_spaces(*index, parsed, init);
-    parsed->floor.green = my_atoi(&init->line[*index]);
-    if (parsed->floor.green > 255 || parsed->floor.green < 0 \
-        || !ft_isdigit(init->line[*index]))
-        parser_errors(parsed, "Wrong green code\n");
-    
-    *index = skip_spaces(*index, parsed, init);
-    parsed->floor.blue = my_atoi(&init->line[*index]);
-    if (parsed->floor.blue > 255 || parsed->floor.blue < 0 \
-        || !ft_isdigit(init->line[*index]))
-        parser_errors(parsed, "Wrong blue code\n");
-    
-    return (0);
+	parsed->floor.red = ft_atoi(&init->line[*index]);
+	if (parsed->floor.red > 255 || parsed->floor.red < 0 || !ft_isdigit(init->line[*index]))
+		parser_errors(parsed, "Wrong red code\n");
+
+	*index = skip_spaces(*index, parsed, init);
+	parsed->floor.green = ft_atoi(&init->line[*index]);
+	if (parsed->floor.green > 255 || parsed->floor.green < 0 || !ft_isdigit(init->line[*index]))
+		parser_errors(parsed, "Wrong green code\n");
+
+	*index = skip_spaces(*index, parsed, init);
+	parsed->floor.blue = ft_atoi(&init->line[*index]);
+	if (parsed->floor.blue > 255 || parsed->floor.blue < 0 || !ft_isdigit(init->line[*index]))
+		parser_errors(parsed, "Wrong blue code\n");
+
+	return (0);
 }
 
-void	the_checker(t_parser *parsed, t_file *init, int i)
+void the_checker(t_parser *parsed, t_file *init, int i)
 {
-	int	count;
+	int count;
 
 	count = 0;
 	while (init->line[i] != '\n')
@@ -90,9 +83,9 @@ void	the_checker(t_parser *parsed, t_file *init, int i)
 	}
 }
 
-int	background_fill(t_parser *parsed, t_file *init, char platform, int *flag)
+int background_fill(t_parser *parsed, t_file *init, char platform, int *flag)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (init->line && init->line[i] == ' ')
@@ -118,12 +111,12 @@ int	background_fill(t_parser *parsed, t_file *init, char platform, int *flag)
 	return (0);
 }
 
-void	struct_filler(t_parser *parsed, t_file *init)
+void struct_filler(t_parser *parsed, t_file *init)
 {
-	int	check;
-	int	count;
-	int	ceiling;
-	int	floor;
+	int check;
+	int count;
+	int ceiling;
+	int floor;
 
 	count = 0;
 	ceiling = 0;
