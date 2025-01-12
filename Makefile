@@ -95,4 +95,7 @@ re: fclean all
 test: all
 	./$(NAME) map.cub
 
+sub_test: all
+	./$(NAME) maps/good/subject_map.cub
+
 .PHONY: all clean fclean re test

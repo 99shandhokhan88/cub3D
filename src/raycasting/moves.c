@@ -23,7 +23,7 @@ void	move_forward(t_params *params,
 
 	new_pos_x = (params->posX + params->dirX * move_speed) - 0.0042;
 	new_pos_y = (params->posY + params->dirY * move_speed) - 0.0042;
-	if (new_pos_x >= 0 && new_pos_x < params->game->map->width && new_pos_y >= 0 && new_pos_y < params->game->map->height)
+	if (new_pos_x >= 0 && new_pos_x < params->game->map->height && new_pos_y >= 0 && new_pos_y < params->game->map->width)
 	{
 		check_x1 = (int)new_pos_x;
 		check_y1 = (int)params->posY;
@@ -48,7 +48,7 @@ void	move_backward(t_params *params,
 
 	new_pos_x = (params->posX - params->dirX * move_speed) + 0.0042;
 	new_pos_y = (params->posY - params->dirY * move_speed) + 0.0042;
-	if (new_pos_x >= 0 && new_pos_x < params->game->map->width && new_pos_y >= 0 && new_pos_y < params->game->map->height)
+	if (new_pos_x >= 0 && new_pos_x < params->game->map->height && new_pos_y >= 0 && new_pos_y < params->game->map->width)
 	{
 		check_x1 = (int)new_pos_x;
 		check_y1 = (int)params->posY;
@@ -73,7 +73,7 @@ void	move_left(t_params *params,
 
 	new_pos_x = params->posX + (-params->dirY) * move_speed;
 	new_pos_y = params->posY + (params->dirX) * move_speed;
-	if (new_pos_x >= 0 && new_pos_x < params->game->map->width && new_pos_y >= 0 && new_pos_y < params->game->map->height)
+	if (new_pos_x >= 0 && new_pos_x < params->game->map->height && new_pos_y >= 0 && new_pos_y < params->game->map->width)
 	{
 		check_x1 = (int)new_pos_x;
 		check_y1 = (int)params->posY;
@@ -98,7 +98,7 @@ void	move_right(t_params *params,
 
 	new_pos_x = params->posX + (params->dirY) * move_speed;
 	new_pos_y = params->posY + (-params->dirX) * move_speed;
-	if (new_pos_x >= 0 && new_pos_x < params->game->map->width && new_pos_y >= 0 && new_pos_y < params->game->map->height)
+	if (new_pos_x >= 0 && new_pos_x < params->game->map->height && new_pos_y >= 0 && new_pos_y < params->game->map->width)
 	{
 		check_x1 = (int)new_pos_x;
 		check_y1 = (int)params->posY;

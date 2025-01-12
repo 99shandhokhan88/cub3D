@@ -18,7 +18,7 @@ void	advance_ray(t_ray *ray)
 
 int	check_hit(t_params *params, t_ray *ray)
 {
-	if (ray->mapX >= 0 && ray->mapY >= 0 && ray->mapX < params->game->map->width && ray->mapY < params->game->map->height)
+	if (ray->mapX >= 0 && ray->mapY >= 0 && ray->mapX < params->game->map->height && ray->mapY < params->game->map->width)
 	{
 		if (params->game->map->grid[ray->mapX][ray->mapY] == 1)
 			return (1);
