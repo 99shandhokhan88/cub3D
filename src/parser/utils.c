@@ -42,19 +42,6 @@ char	*ft_strchr(char const *s, int c)
 	return (NULL);
 }
 
-
-void	*set_to_zero(void *space, int zero, size_t dimension)
-{
-	unsigned char	*temp;
-	size_t			i;
-
-	temp = (unsigned char *)space;
-	i = 0;
-	while (i < dimension)
-		temp[i++] = zero;
-	return (space);
-}
-
 void	*alloc_with_zero(size_t type_count, size_t size)
 {
 	void	*res;
@@ -66,7 +53,7 @@ void	*alloc_with_zero(size_t type_count, size_t size)
 	res = (void *) malloc(len);
 	if (res == NULL)
 		return (NULL);
-	set_to_zero(res, '\0', len);
+	ft_bzero(res, len);
 	return (res);
 }
 

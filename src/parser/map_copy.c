@@ -79,7 +79,7 @@ char	**manage_spaces(char **map, int i, int j)
 
 	if (i == 0)
 		return (NULL);
-	set_to_zero(&copy_map, 0, sizeof(copy_map));
+	ft_bzero(&copy_map, sizeof(copy_map));
 	copy_map.i = -1;
 	copy_map.copy_map = malloc(sizeof(char *) * (i + 1));
 	if (copy_map.copy_map == NULL)

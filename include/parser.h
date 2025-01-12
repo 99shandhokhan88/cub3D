@@ -91,7 +91,6 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*get_next_line_map(int fd);
 char		*strjoin(char *dst, char *s);
 int			size_lst(t_file *lst);
-void		*set_to_zero(void *space, int zero, size_t dimension);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 int			my_atoi(const char *str);
 int			ft_isdigit(int c);

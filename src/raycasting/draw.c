@@ -49,7 +49,7 @@ int	draw(t_params *params)
 		return (1);
 	}
 
-	set_to_zero(params->img_data, 0,
+	ft_bzero(params->img_data,
 		SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(unsigned int));
 	render_floor_ceiling(params->img_data, params->game->colors);
 	raycasting(params);

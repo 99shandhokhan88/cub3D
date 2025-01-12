@@ -2,6 +2,7 @@
 # define CUBE3D_H
 
 # include "mlx.h"
+# include "libft.h"
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -21,7 +22,9 @@
 # define BLUE "\x1b[36m"
 # define RESET "\x1b[0m"
 
-# define BUFFER_SIZE 42
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # define SCREEN_WIDTH 1280
 # define SCREEN_HEIGHT 720

@@ -29,14 +29,14 @@ t_parser *parse_init(void)
     parsed = malloc(sizeof(t_parser));
     if (parsed == NULL)
         return (NULL);
-    set_to_zero(parsed, 0, sizeof(t_parser));
-    
+    ft_bzero(parsed, sizeof(t_parser));
+
     // Initialize textures
     parsed->textures_parse.north = NULL;
     parsed->textures_parse.south = NULL;
     parsed->textures_parse.east = NULL;
     parsed->textures_parse.west = NULL;
-    
+
     // Initialize colors
     parsed->floor.red = 0;
     parsed->floor.green = 0;
@@ -44,12 +44,12 @@ t_parser *parse_init(void)
     parsed->ceiling.red = 0;
     parsed->ceiling.green = 0;
     parsed->ceiling.blue = 0;
-    
+
     parsed->player_position = 0;
     parsed->map = NULL;
     parsed->init = NULL;
     parsed->len_y = 0;
-    
+
     return (parsed);
 }
 

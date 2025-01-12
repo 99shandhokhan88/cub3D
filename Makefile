@@ -92,4 +92,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+test: all
+	./$(NAME) map.cub
+
+.PHONY: all clean fclean re test
