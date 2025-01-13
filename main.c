@@ -179,6 +179,13 @@ int init_params2(t_params *params)
 	params->colors.floor.g = 0;
 	params->colors.floor.b = 0;
 
+	params->keys.a = false;
+	params->keys.d = false;
+	params->keys.s = false;
+	params->keys.w = false;
+	params->keys.left = false;
+	params->keys.right = false;
+	params->keys.shift = false;
 	return (0);
 }
 
@@ -205,7 +212,8 @@ int main(int ac, char **av)
 	// params.window = mlx_new_window(params.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	free_parse(parsed_map);
 	load_textures(&params);
-	mlx_hook(params.window, 2, 1L << 0, move_player, &params);
+	mlx_hook(params.window, 2, 1L << 0, handle_pressed, &params);
+	mlx_hook(params.window, 3, 1L << 1, handle_released, &params);
 	mlx_hook(params.window, 17, 1L << 17, close_window, &params);
 	mlx_loop_hook(params.mlx, draw, &params);
 	mlx_loop(params.mlx);

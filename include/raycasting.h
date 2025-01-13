@@ -54,6 +54,17 @@ typedef struct s_game
 	t_textures	*textures;
 }	t_game;
 
+typedef struct s_key_press
+{
+	bool	a;
+	bool	d;
+	bool	s;
+	bool	w;
+	bool	left;
+	bool	right;
+	bool	shift;
+}	t_key_press;
+
 typedef struct s_params
 {
 	int				bits_per_pixel;
@@ -72,6 +83,7 @@ typedef struct s_params
 	int				size_line;
 	t_textures		textures;
 	void			*window;
+	t_key_press		keys;
 }	t_params;
 
 typedef struct s_ray
@@ -101,7 +113,9 @@ typedef struct s_wall_slice_data
 	t_texture	*current_texture;
 }	t_wall_slice_data;
 
-int		move_player(int key, t_params *params);
+int		handle_pressed(int key, t_params *params);
+int		handle_released(int key, t_params *params);
+int		move_player(t_params *params);
 void	initialize_ray(t_params *params, t_ray *ray, int x);
 void	calculate_step_and_side(t_params *params, t_ray *ray);
 void	calculate_ray(t_params *params, t_ray *ray, int x);

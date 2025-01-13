@@ -52,6 +52,7 @@ typedef enum e_keys
 	KEY_DOWN = 65364,
 	KEY_ESC = 65307,
 	KEY_Q = 113,
+	KEY_SHIFT = 65505,
 }	t_keys;
 
 // libft functions
