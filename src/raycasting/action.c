@@ -43,23 +43,23 @@ int	handle_released(int key, t_params *params)
 int	move_player(t_params *params)
 {
 	double	move_speed;
-	double	rot_speed;
+	int		run_mul;
 
-	move_speed = 0.021;
+	run_mul = 1;
 	if (params->keys.shift)
-		move_speed *= 5;
-	rot_speed = 0.021;
+		run_mul = 3;
+	move_speed = MOVE_SPEED * run_mul;
 	if (params->keys.w)
-		move_forward(params, move_speed, params->posX + params->dirX * move_speed, params->posY + params->dirY * move_speed);
+		move_forward(params, move_speed);
 	if (params->keys.s)
-		move_backward(params, move_speed, params->posX - params->dirX * move_speed, params->posY - params->dirY * move_speed);
+		move_backward(params, move_speed);
 	if (params->keys.a)
-		move_left(params, move_speed, params->posX - params->dirY * move_speed, params->posY + params->dirX * move_speed);
+		move_left(params, move_speed);
 	if (params->keys.d)
-		move_right(params, move_speed, params->posX + params->dirY * move_speed, params->posY - params->dirX * move_speed);
+		move_right(params, move_speed);
 	if (params->keys.left)
-		rotate_player(params, rot_speed);
+		rotate_player(params, ROTATE_SPEED);
 	if (params->keys.right)
-		rotate_player(params, -rot_speed);
+		rotate_player(params, -ROTATE_SPEED);
 	return (0);
 }

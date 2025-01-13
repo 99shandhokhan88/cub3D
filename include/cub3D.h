@@ -31,6 +31,9 @@
 # define MAP_WIDTH 38
 # define MAP_HEIGHT 38
 
+# define MOVE_SPEED 0.021
+# define ROTATE_SPEED 0.021
+
 # define UP 1
 # define DOWN 2
 # define LEFT 3

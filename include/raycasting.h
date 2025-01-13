@@ -133,14 +133,10 @@ void	ft_exit(t_params *params, int code);
 void	load_single_texture(t_params *params, t_texture *texture, char *path);
 void	load_textures(t_params *params);
 void	rotate_player(t_params *params, double rot_speed);
-void	move_forward(t_params *params,
-		double move_speed, double new_pos_x, double new_pos_y);
-void	move_backward(t_params *params,
-		double move_speed, double new_pos_x, double new_pos_y);
-void	move_left(t_params *params,
-		double move_speed, double new_pos_x, double new_pos_y);
-void	move_right(t_params *params,
-		double move_speed, double new_pos_x, double new_pos_y);
+void	move_forward(t_params *params, double move_speed);
+void	move_backward(t_params *params, double move_speed);
+void	move_left(t_params *params, double move_speed);
+void	move_right(t_params *params, double move_speed);
 void	advance_ray(t_ray *ray);
 int		check_hit(t_params *params, t_ray *ray);
 void	progress_ray(t_params *params, t_ray *ray);
