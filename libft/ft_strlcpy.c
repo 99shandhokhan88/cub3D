@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 00:46:45 by flo-dolc          #+#    #+#             */
-/*   Updated: 2024/01/17 15:57:09 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/01/13 22:47:39 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,22 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 		dest[i] = '\0';
 	}
 	return (srclen);
+}
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (src[i] && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		i++;
+	}
+	return (dest);
 }

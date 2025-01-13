@@ -1,20 +1,5 @@
 #include "include/cub3D.h"
 
-char *copy_str(char *copy, const char *original, int n)
-{
-	int i;
-
-	i = 0;
-	while (original[i] && i < n)
-	{
-		copy[i] = original[i];
-		i++;
-	}
-	while (i < n)
-		copy[i++] = '\0';
-	return (copy);
-}
-
 void transfer_parsed_data(t_params *params, t_parser *parsed_map)
 {
 	int index = 0;
@@ -53,10 +38,10 @@ void transfer_parsed_data(t_params *params, t_parser *parsed_map)
 	params->game->colors->floor.b = parsed_map->floor.b;
 
 	// Transfer texture paths
-	copy_str(params->game->textures->north.path, parsed_map->textures_parse.north, 256);
-	copy_str(params->game->textures->south.path, parsed_map->textures_parse.south, 256);
-	copy_str(params->game->textures->east.path, parsed_map->textures_parse.east, 256);
-	copy_str(params->game->textures->west.path, parsed_map->textures_parse.west, 256);
+	ft_strncpy(params->game->textures->north.path, parsed_map->textures_parse.north, 256);
+	ft_strncpy(params->game->textures->south.path, parsed_map->textures_parse.south, 256);
+	ft_strncpy(params->game->textures->east.path, parsed_map->textures_parse.east, 256);
+	ft_strncpy(params->game->textures->west.path, parsed_map->textures_parse.west, 256);
 
 	// Set initial player position and direction
 	for (int i = 0; i < params->game->map->height; i++)

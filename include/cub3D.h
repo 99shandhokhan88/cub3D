@@ -58,7 +58,4 @@ typedef enum e_keys
 	KEY_SHIFT = 65505,
 }	t_keys;
 
-// libft functions
-char	*copy_str(char *copy, const char *original, int n);
-
 #endif
