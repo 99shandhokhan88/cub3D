@@ -7,12 +7,12 @@ typedef struct s_textures	t_textures;
 typedef struct s_game		t_game;
 typedef struct s_params		t_params;
 
-// typedef struct s_color
-// {
-// 	int		r;
-// 	int		g;
-// 	int		b;
-// }	t_color;
+typedef struct s_color
+{
+	int		r;
+	int		g;
+	int		b;
+}	t_color;
 
 typedef struct s_colors
 {
@@ -47,13 +47,6 @@ typedef struct s_textures
 	t_texture	west;
 }	t_textures;
 
-typedef struct s_game
-{
-	t_colors	*colors;
-	t_map		*map;
-	t_textures	*textures;
-}	t_game;
-
 typedef struct s_key_press
 {
 	bool	a;
@@ -67,24 +60,30 @@ typedef struct s_key_press
 
 typedef struct s_params
 {
+	void			*mlx;
+	void			*window;
 	int				bits_per_pixel;
-	t_colors		colors;
-	double			dirX;
-	double			dirY;
 	int				endian;
-	t_game			*game;
 	void			*img;
 	unsigned int	*img_data;
-	void			*mlx;
-	double			planeX;
-	double			planeY;
-	double			posX;
-	double			posY;
 	int				size_line;
-	t_textures		textures;
-	void			*window;
 	t_key_press		keys;
 }	t_params;
+
+typedef struct s_game
+{
+	double		posX;
+	double		posY;
+	double		dirX;
+	double		dirY;
+	double		planeX;
+	double		planeY;
+	t_textures	textures;
+	t_colors	colors;
+	t_map		*map;
+	t_params	params;
+	t_parser	parser;
+}	t_game;
 
 typedef struct s_ray
 {

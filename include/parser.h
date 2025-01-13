@@ -14,27 +14,27 @@ typedef struct s_file
 	struct s_file	*next;
 }	t_file;
 
-typedef struct s_color
-{
-	int		r;
-	int		g;
-	int		b;
-}	t_color;
+// typedef struct s_color
+// {
+// 	int		r;
+// 	int		g;
+// 	int		b;
+// }	t_color;
 
-typedef struct s_textures_parse
-{
-	char	*north;
-	char	*south;
-	char	*east;
-	char	*west;
-}	t_textures_parse;
+// typedef struct s_textures_parse
+// {
+// 	char	*north;
+// 	char	*south;
+// 	char	*east;
+// 	char	*west;
+// }	t_textures_parse;
 
 typedef struct s_parser
 {
-	char				**map;
-	t_textures_parse	textures_parse;
-	t_color				floor;
-	t_color				ceiling;
+	// char				**map;
+	// t_textures_parse	textures_parse;
+	// t_color				floor;
+	// t_color				ceiling;
 	t_file				*init;
 	int					player_position;
 	int					len_y;
