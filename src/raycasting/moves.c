@@ -26,9 +26,9 @@ void	move_forward(t_params *params,
 	if (new_pos_x >= 0 && new_pos_x < params->game->map->height && new_pos_y >= 0 && new_pos_y < params->game->map->width)
 	{
 		check_x1 = (int)new_pos_x;
-		check_y1 = (int)params->posY;
+		check_y1 = (int)new_pos_y;
 		check_x2 = (int)params->posX;
-		check_y2 = (int)new_pos_y;
+		check_y2 = (int)params->posY;
 		if (params->game->map->grid[check_x1][check_y1] == 0 &&
 			params->game->map->grid[check_x2][check_y2] == 0)
 		{
@@ -51,9 +51,9 @@ void	move_backward(t_params *params,
 	if (new_pos_x >= 0 && new_pos_x < params->game->map->height && new_pos_y >= 0 && new_pos_y < params->game->map->width)
 	{
 		check_x1 = (int)new_pos_x;
-		check_y1 = (int)params->posY;
+		check_y1 = (int)new_pos_y;
 		check_x2 = (int)params->posX;
-		check_y2 = (int)new_pos_y;
+		check_y2 = (int)params->posY;
 		if (params->game->map->grid[check_x1][check_y1] == 0 &&
 			params->game->map->grid[check_x2][check_y2] == 0)
 		{
@@ -76,9 +76,9 @@ void	move_left(t_params *params,
 	if (new_pos_x >= 0 && new_pos_x < params->game->map->height && new_pos_y >= 0 && new_pos_y < params->game->map->width)
 	{
 		check_x1 = (int)new_pos_x;
-		check_y1 = (int)params->posY;
+		check_y1 = (int)new_pos_y;
 		check_x2 = (int)params->posX;
-		check_y2 = (int)new_pos_y;
+		check_y2 = (int)params->posY;
 		if (params->game->map->grid[check_x1][check_y1] == 0 &&
 			params->game->map->grid[check_x2][check_y2] == 0)
 		{
@@ -101,9 +101,9 @@ void	move_right(t_params *params,
 	if (new_pos_x >= 0 && new_pos_x < params->game->map->height && new_pos_y >= 0 && new_pos_y < params->game->map->width)
 	{
 		check_x1 = (int)new_pos_x;
-		check_y1 = (int)params->posY;
+		check_y1 = (int)new_pos_y;
 		check_x2 = (int)params->posX;
-		check_y2 = (int)new_pos_y;
+		check_y2 = (int)params->posY;
 		if (params->game->map->grid[check_x1][check_y1] == 0 &&
 			params->game->map->grid[check_x2][check_y2] == 0)
 		{
