@@ -63,7 +63,7 @@ char	*strjoin(char *dst, char *s)
 	return (res);
 }
 
-int	skip_spaces(int i, t_parser *parsed, t_file *init)
+int	skip_spaces(int i, t_game *game, t_file *init)
 {
 	int	temp;
 
@@ -73,7 +73,7 @@ int	skip_spaces(int i, t_parser *parsed, t_file *init)
 		i++;
 	if (i - temp >= 4 || (ft_isdigit(init->line[i]) == 0 &&
 						  init->line[i] != ','))
-		parser_errors(parsed, "error rgb code\n");
+		parser_errors(game, "error rgb code\n");
 	i++;
 	while (init->line[i] && init->line[i] == ' ')
 		i++;

@@ -53,8 +53,11 @@ void	render_floor_ceiling(unsigned int *img_data, t_colors *colors)
 	}
 }
 
-int	draw(t_params *params)
+int	draw(t_game *game)
 {
+	t_params	*params;
+
+	params = &game->params;
 	if (!params || !params->mlx || !params->window || !params->img || !params->img_data)
 	{
 		printf("Error: Invalid parameters in draw function\n");
@@ -62,12 +65,12 @@ int	draw(t_params *params)
 	}
 
 	// Update player position and direction
-	move_player(params);
-	
+	move_player(game, params);
+
 	ft_bzero(params->img_data,
 			 SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(unsigned int));
-	render_floor_ceiling(params->img_data, params->game->colors);
-	raycasting(params);
+	render_floor_ceiling(params->img_data, &game->colors);
+	raycasting(game, params);
 	mlx_put_image_to_window(params->mlx, params->window, params->img, 0, 0);
 	return (0);
 }

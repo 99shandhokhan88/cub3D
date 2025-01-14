@@ -1,46 +1,46 @@
 #include "cub3D.h"
 
-int	handle_pressed(int key, t_params *params)
+int	handle_pressed(int key, t_game *game)
 {
 	if (key == KEY_W)
-		params->keys.w = true;
+		game->params.keys.w = true;
 	else if (key == KEY_S)
-		params->keys.s = true;
+		game->params.keys.s = true;
 	else if (key == KEY_A)
-		params->keys.a = true;
+		game->params.keys.a = true;
 	else if (key == KEY_D)
-		params->keys.d = true;
+		game->params.keys.d = true;
 	else if (key == KEY_LEFT)
-		params->keys.left = true;
+		game->params.keys.left = true;
 	else if (key == KEY_RIGHT)
-		params->keys.right = true;
+		game->params.keys.right = true;
 	else if (key == KEY_SHIFT)
-		params->keys.shift = true;
+		game->params.keys.shift = true;
 	else if (key == KEY_ESC || key == KEY_Q)
-		ft_exit(params, 0);
+		ft_exit(game, 0);
 	return (0);
 }
 
-int	handle_released(int key, t_params *params)
+int	handle_released(int key, t_game *game)
 {
 	if (key == KEY_W)
-		params->keys.w = false;
+		game->params.keys.w = false;
 	else if (key == KEY_S)
-		params->keys.s = false;
+		game->params.keys.s = false;
 	else if (key == KEY_A)
-		params->keys.a = false;
+		game->params.keys.a = false;
 	else if (key == KEY_D)
-		params->keys.d = false;
+		game->params.keys.d = false;
 	else if (key == KEY_LEFT)
-		params->keys.left = false;
+		game->params.keys.left = false;
 	else if (key == KEY_RIGHT)
-		params->keys.right = false;
+		game->params.keys.right = false;
 	else if (key == KEY_SHIFT)
-		params->keys.shift = false;
+		game->params.keys.shift = false;
 	return (0);
 }
 
-int	move_player(t_params *params)
+int	move_player(t_game *game, t_params *params)
 {
 	double	move_speed;
 	int		run_mul;
@@ -50,16 +50,16 @@ int	move_player(t_params *params)
 		run_mul = 3;
 	move_speed = MOVE_SPEED * run_mul;
 	if (params->keys.w)
-		move_forward(params, move_speed);
+		move_forward(game, move_speed);
 	if (params->keys.s)
-		move_backward(params, move_speed);
+		move_backward(game, move_speed);
 	if (params->keys.a)
-		move_left(params, move_speed);
+		move_left(game, move_speed);
 	if (params->keys.d)
-		move_right(params, move_speed);
+		move_right(game, move_speed);
 	if (params->keys.left)
-		rotate_player(params, ROTATE_SPEED);
+		rotate_player(game, ROTATE_SPEED);
 	if (params->keys.right)
-		rotate_player(params, -ROTATE_SPEED);
+		rotate_player(game, -ROTATE_SPEED);
 	return (0);
 }

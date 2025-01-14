@@ -21,93 +21,51 @@ void	check_file(char *file)
 	}
 }
 
-t_parser	*parse_init(void)
+void	free_parse(t_game *game)
 {
-	t_parser	*parsed;
-
-	parsed = malloc(sizeof(t_parser));
-	if (parsed == NULL)
-		return (NULL);
-	ft_bzero(parsed, sizeof(t_parser));
-
-	// Initialize textures
-	parsed->textures_parse.north = NULL;
-	parsed->textures_parse.south = NULL;
-	parsed->textures_parse.east = NULL;
-	parsed->textures_parse.west = NULL;
-
-	// Initialize colors
-	parsed->floor.r = 0;
-	parsed->floor.g = 0;
-	parsed->floor.b = 0;
-	parsed->ceiling.r = 0;
-	parsed->ceiling.g = 0;
-	parsed->ceiling.b = 0;
-
-	parsed->player_position = 0;
-	parsed->map = NULL;
-	parsed->init = NULL;
-	parsed->len_y = 0;
-
-	return (parsed);
+	free(game->textures.east.path);
+	free(game->textures.north.path);
+	free(game->textures.south.path);
+	free(game->textures.west.path);
+	free_map2(game->parsed_map);
+	free(game);
+	game = NULL;
 }
 
-void	free_parse(t_parser *parsed)
+void	check_inside_char(t_game *game, t_textures *textures)
 {
-	free(parsed->textures_parse.north);
-	free(parsed->textures_parse.south);
-	free(parsed->textures_parse.east);
-	free(parsed->textures_parse.west);
-	free_map2(parsed->map);
-	free(parsed);
-	parsed = 0;
-}
-
-void	check_inside_char(t_parser *parse)
-{
-	if (parse->textures_parse.north[0] == '\0')
+	if (textures->east.path[0] == '\0')
 	{
 		printf(RED BOLD "Error\n" RESET "file empty north\n");
-		free_parse(parse);
+		free_parse(game);
 		exit(EXIT_FAILURE);
 	}
-	if (parse->textures_parse.south[0] == '\0')
+	if (textures->north.path[0] == '\0')
+	{
+		printf(RED BOLD "Error\n" RESET "file empty north\n");
+		free_parse(game);
+		exit(EXIT_FAILURE);
+	}
+	if (textures->south.path[0] == '\0')
 	{
 		printf(RED BOLD "Error\n" RESET "file empty south\n");
-		free_parse(parse);
+		free_parse(game);
 		exit(EXIT_FAILURE);
 	}
-	if (parse->textures_parse.west[0] == '\0')
+	if (textures->west.path[0] == '\0')
 	{
 		printf(RED BOLD "Error\n" RESET "file empty west\n");
-		free_parse(parse);
-		exit(EXIT_FAILURE);
-	}
-	if (parse->textures_parse.east[0] == '\0')
-	{
-		printf(RED BOLD "Error\n" RESET "file empty east\n");
-		free_parse(parse);
+		free_parse(game);
 		exit(EXIT_FAILURE);
 	}
 }
 
-t_parser	*parser(char **av)
+void	parser(char *filename, t_game *game)
 {
-	t_file		*init;
-	t_parser	*parsed_map;
-
-	init = 0;
-	check_file(av[1]);
-	check_cub(&init, av[1]);
-	init_empty(init);
-	parsed_map = parse_init();
-	if (parsed_map == NULL)
-	{
-		free_struct(init);
-		parser_errors(NULL, "Malloc error\n");
-	}
-	struct_filler(parsed_map, init);
-	free_struct(init);
-	check_inside_char(parsed_map);
-	return (parsed_map);
+	check_file(filename);
+	check_cub(&game->parser.init, filename);
+	init_empty(game->parser.init);
+	struct_filler(game, &game->parser, game->parser.init);
+	free_struct(game->parser.init);
+	check_inside_char(&game, &game->textures);
 }

@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-void	fill_map(t_parser *parsed, t_file *init)
+void	fill_map(t_game *game, t_file *init)
 {
 	int		i;
 	char	**map;
@@ -8,7 +8,7 @@ void	fill_map(t_parser *parsed, t_file *init)
 	i = size_lst(init);
 	map = malloc(sizeof(char *) * (i + 1));
 	if (map == NULL)
-		parser_errors(parsed, "Error malloc");
+		parser_errors(game, "Error malloc");
 	map[i] = 0;
 	i = 0;
 	while (init)
@@ -17,10 +17,10 @@ void	fill_map(t_parser *parsed, t_file *init)
 		if (map[i] == NULL)
 		{
 			free_map2(map);
-			parser_errors(parsed, "Error malloc");
+			parser_errors(game, "Error malloc");
 		}
 		init = init->next;
 		i++;
 	}
-	parsed->map = map;
+	game->parsed_map = map;
 }

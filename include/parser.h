@@ -8,11 +8,11 @@ typedef struct s_map_copy
 	int		j;
 }	t_map_copy;
 
-typedef struct s_file
-{
-	char			*line;
-	struct s_file	*next;
-}	t_file;
+// typedef struct s_file
+// {
+// 	char			*line;
+// 	struct s_file	*next;
+// }	t_file;
 
 // typedef struct s_color
 // {
@@ -29,19 +29,19 @@ typedef struct s_file
 // 	char	*west;
 // }	t_textures_parse;
 
-typedef struct s_parser
-{
-	// char				**map;
-	// t_textures_parse	textures_parse;
-	// t_color				floor;
-	// t_color				ceiling;
-	t_file				*init;
-	int					player_position;
-	int					len_y;
-}	t_parser;
+// typedef struct s_parser
+// {
+// 	// char				**map;
+// 	// t_textures_parse	textures_parse;
+// 	// t_color				floor;
+// 	// t_color				ceiling;
+// 	t_file				*init;
+// 	int					player_position;
+// 	int					len_y;
+// }	t_parser;
 
 int			my_error(char **av);
-t_parser	*parser(char **av);
+void		parser(char *filename, t_game *game);
 void		check_file(char *file);
 void		check_cub(t_file **init, char *file);
 void		parsing_handle_escape(t_file *file);
@@ -53,20 +53,19 @@ t_file		*lstlast(t_file *lst);
 void		lstadd_back(t_file **lst, t_file *new);
 void		init_empty(t_file *init);
 int			back_slash_trimmer(t_file *init);
-void		parser_errors(t_parser *parsed, char *message);
-t_parser	*parse_init(void);
-void		struct_filler(t_parser *parsed, t_file *init);
-int			direction(t_parser *parsed, t_file *init, char *dir, char **path);
-int			background_fill(t_parser *parsed, t_file *init, char platform, int *done);
-int			fill_floor(t_parser *parsed, t_file *init, int *index);
-int			skip_spaces(int index, t_parser *parsed, t_file *init);
-int			fill_ceiling(t_parser *parsed, t_file *init, int *index);
-void		the_checker(t_parser *parsed, t_file *init, int index);
-void		fill_map(t_parser *parsed, t_file *init);
+void		parser_errors(t_game *game, char *message);
+void		struct_filler(t_game *game, t_parser *parsed, t_file *init);
+int			direction(t_game *game, t_file *init, char *dir, char **path);
+int			background_fill(t_game *game, t_file *init, char platform, int *done);
+int			fill_floor(t_game *game, t_file *init, int *index);
+int			fill_ceiling(t_game *game, t_file *init, int *index);
+int			skip_spaces(int index, t_game *game, t_file *init);
+void		the_checker(t_game *game, t_file *init, int index);
+void		fill_map(t_game *game, t_file *init);
 void		free_map2(char **map);
-void		check_inside_char(t_parser *parse);
-void		free_parse(t_parser *parsed);
-int			parsing_map(t_parser *parsed);
+void		check_inside_char(t_game *game, t_textures *textures);
+void		free_parse(t_game *game);
+int			parsing_map(t_game *game);
 char		**map_copy(char **map);
 int			find_max_line(char **map, int *i);
 char		**manage_spaces(char **map, int i, int j);

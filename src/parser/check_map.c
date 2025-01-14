@@ -23,12 +23,12 @@
 // 	}
 // }
 
-int	parsing_map(t_parser *parsed)
+int	parsing_map(t_game *game)
 {
 	char	**matrix_copy;
 	int		error;
 
-	matrix_copy = map_copy(parsed->map);
+	matrix_copy = map_copy(game->parsed_map);
 	if (matrix_copy == NULL || matrix_copy[0] == NULL)
 	{
 		printf("Error\n");
@@ -36,8 +36,8 @@ int	parsing_map(t_parser *parsed)
 		return (1);
 	}
 	// print_map_non_printable(matrix_copy);
-	error = check_inside(parsed, matrix_copy);
-	if (error == 1 || parsed->player_position == 0)
+	error = check_inside(&game->parser, matrix_copy);
+	if (error == 1 || game->parser.player_position == 0)
 	{
 		printf("Error\n");
 		printf("the player\n");

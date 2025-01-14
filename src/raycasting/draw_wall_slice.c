@@ -11,30 +11,30 @@ void	calculate_wall_slice_dimensions(t_ray *ray, t_wall_slice_data *data)
 		data->drawEnd = SCREEN_HEIGHT - 1;
 }
 
-double	calculate_wall_x(t_params *params, t_ray *ray)
+double	calculate_wall_x(t_game *game, t_ray *ray)
 {
 	double	wall_x;
 
 	if (ray->side == 0)
-		wall_x = params->posY + ray->perpWallDist * ray->rayDirY;
+		wall_x = game->posY + ray->perpWallDist * ray->rayDirY;
 	else
-		wall_x = params->posX + ray->perpWallDist * ray->rayDirX;
+		wall_x = game->posX + ray->perpWallDist * ray->rayDirX;
 	return (wall_x - floor(wall_x));
 }
 
-t_texture *select_wall_texture(t_params *params, t_ray *ray)
+t_texture *select_wall_texture(t_game *game, t_ray *ray)
 {
 	if (ray->side == 0)
 	{
 		if (ray->stepX > 0)
-			return (&params->textures.east);
-		return (&params->textures.west);
+			return (&game->textures.east);
+		return (&game->textures.west);
 	}
 	else
 	{
 		if (ray->stepY > 0)
-			return (&params->textures.south);
-		return (&params->textures.north);
+			return (&game->textures.south);
+		return (&game->textures.north);
 	}
 }
 
@@ -48,7 +48,7 @@ int	calculate_tex_x(t_wall_slice_data *data, t_ray *ray)
 	return (tex_x);
 }
 
-void	draw_wall_slice(t_params *params, t_ray *ray, int x, int y)
+void	draw_wall_slice(t_game *game, t_params *params, t_ray *ray, int x, int y)
 {
 	t_wall_slice_data	data;
 	double				step;
@@ -57,8 +57,8 @@ void	draw_wall_slice(t_params *params, t_ray *ray, int x, int y)
 	unsigned int		color;
 
 	calculate_wall_slice_dimensions(ray, &data);
-	data.wallX = calculate_wall_x(params, ray);
-	data.current_texture = select_wall_texture(params, ray);
+	data.wallX = calculate_wall_x(game, ray);
+	data.current_texture = select_wall_texture(game, ray);
 	data.texX = calculate_tex_x(&data, ray);
 	prepare_texture_sampling(&data, &step, &tex_pos);
 	y = data.drawStart;

@@ -16,11 +16,11 @@ void	advance_ray(t_ray *ray)
 	}
 }
 
-int	check_hit(t_params *params, t_ray *ray)
+int	check_hit(t_game *game, t_ray *ray)
 {
-	if (ray->mapX >= 0 && ray->mapY >= 0 && ray->mapX < params->game->map->height && ray->mapY < params->game->map->width)
+	if (ray->mapX >= 0 && ray->mapY >= 0 && ray->mapX < game->map->height && ray->mapY < game->map->width)
 	{
-		if (params->game->map->grid[ray->mapX][ray->mapY] == 1)
+		if (game->map->grid[ray->mapX][ray->mapY] == 1)
 			return (1);
 	}
 	else
@@ -28,7 +28,7 @@ int	check_hit(t_params *params, t_ray *ray)
 	return (0);
 }
 
-void	progress_ray(t_params *params, t_ray *ray)
+void	progress_ray(t_game *game, t_ray *ray)
 {
 	int	hit;
 
@@ -36,7 +36,7 @@ void	progress_ray(t_params *params, t_ray *ray)
 	while (!hit)
 	{
 		advance_ray(ray);
-		hit = check_hit(params, ray);
+		hit = check_hit(game, ray);
 	}
 }
 
@@ -48,8 +48,8 @@ void	calculate_wall_distance(t_ray *ray)
 		ray->perpWallDist = ray->sideDistY - ray->deltaDistY;
 }
 
-void	perform_dda(t_params *params, t_ray *ray)
+void	perform_dda(t_game *game, t_ray *ray)
 {
-	progress_ray(params, ray);
+	progress_ray(game, ray);
 	calculate_wall_distance(ray);
 }

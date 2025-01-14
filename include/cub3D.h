@@ -14,8 +14,8 @@
 # include <errno.h>
 # include <stdint.h>
 
-# include "parser.h"
 # include "raycasting.h"
+# include "parser.h"
 
 # define BOLD "\x1b[1m"
 # define RED "\x1b[31m"

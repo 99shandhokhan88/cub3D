@@ -18,9 +18,7 @@ void	free_struct(t_file *init)
 {
 	t_file	*temp;
 
-	if (init == NULL)
-		return;
-	while (init->next)
+	while (init)
 	{
 		temp = init->next;
 		if (init->line)
@@ -28,30 +26,27 @@ void	free_struct(t_file *init)
 		free(init);
 		init = temp;
 	}
-	if (init->line)
-		free(init->line);
-	free(init);
 }
 
-void	parser_errors(t_parser *parsed, char *message)
+void	parser_errors(t_game *game, char *message)
 {
 	int	i;
 
 	i = -1;
-	if (parsed != NULL)
+	if (game != NULL)
 	{
-		free_struct(parsed->init);
-		free(parsed->textures_parse.north);
-		free(parsed->textures_parse.south);
-		free(parsed->textures_parse.east);
-		free(parsed->textures_parse.west);
-		if (parsed->map)
+		free_struct(game->parser.init);
+		// free(game->textures.north.path);
+		// free(game->textures.south.path);
+		// free(game->textures.east.path);
+		// free(game->textures.west.path);
+		if (game->parsed_map)
 		{
-			while (parsed->map[++i])
-				free(parsed->map[i]);
-			free(parsed->map);
+			while (game->parsed_map[++i])
+				free(game->parsed_map[i]);
+			free(game->parsed_map);
 		}
-		free(parsed);
+		free(game);
 	}
 	printf(RED BOLD "Error\n" RESET);
 	printf("%s\n", message);
