@@ -1,0 +1,19 @@
+
+NO ./textures/naples/mario.xpm
+SO ./textures/naples/yoshi.xpm
+WE ./textures/naples/sonic.xpm
+EA ./textures/naples/pika.xpm
+
+
+
+F 121, 44, 17
+C 103, 105, 255
+
+1111111111 1
+1011000111 111111111
+1110001111111 1111
+1100000001 1 111 1 111
+10000E01011111111111
+1000000011 	    1
+1111111111 1111
+11111111111111111
