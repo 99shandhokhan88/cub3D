@@ -111,7 +111,7 @@ int	background_fill(t_game *game, t_file *init, char platform, int *flag)
 	return (0);
 }
 
-void	struct_filler(t_game *game, t_parser *parsed, t_file *init)
+void	struct_filler(t_game *game, t_file *init)
 {
 	int	check;
 	int	count;

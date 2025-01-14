@@ -54,7 +54,7 @@ void		lstadd_back(t_file **lst, t_file *new);
 void		init_empty(t_file *init);
 int			back_slash_trimmer(t_file *init);
 void		parser_errors(t_game *game, char *message);
-void		struct_filler(t_game *game, t_parser *parsed, t_file *init);
+void		struct_filler(t_game *game, t_file *init);
 int			direction(t_game *game, t_file *init, char *dir, char **path);
 int			background_fill(t_game *game, t_file *init, char platform, int *done);
 int			fill_floor(t_game *game, t_file *init, int *index);

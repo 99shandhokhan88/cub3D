@@ -126,11 +126,11 @@ int main(int ac, char **av)
 	game->parser.len_y = matrix_len(game->parsed_map);
 	printf("napoli\n");
 	// TRANSFER PARSED DATA TO RAYCASTING STRUCTURES
-	transfer_parsed_data(&game);
+	transfer_parsed_data(game);
 	// params.mlx = mlx_init();
 	// params.window = mlx_new_window(params.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
-	free_parse(game);
-	load_textures(&game);
+	// free_parse(game);
+	load_textures(game);
 	mlx_hook(game->params.window, 2, 1L << 0, handle_pressed, &game);
 	mlx_hook(game->params.window, 3, 1L << 1, handle_released, &game);
 	mlx_hook(game->params.window, 17, 1L << 17, close_window, &game);

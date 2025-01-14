@@ -37,7 +37,7 @@ typedef struct s_texture
 {
 	void			*img;
 	unsigned int	*addr;
-	char			path[256];
+	char			*path;
 	int				bits_per_pixel;
 	int				endian;
 	int				width;

@@ -65,7 +65,7 @@ void	parser(char *filename, t_game *game)
 	check_file(filename);
 	check_cub(&game->parser.init, filename);
 	init_empty(game->parser.init);
-	struct_filler(game, &game->parser, game->parser.init);
+	struct_filler(game, game->parser.init);
 	free_struct(game->parser.init);
-	check_inside_char(&game, &game->textures);
+	check_inside_char(game, &game->textures);
 }
