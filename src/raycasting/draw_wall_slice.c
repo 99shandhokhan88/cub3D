@@ -2,7 +2,7 @@
 
 void	calculate_wall_slice_dimensions(t_ray *ray, t_wall_slice_data *data)
 {
-	data->lineHeight = (int)(SCREEN_HEIGHT / ray->perpWallDist);
+	data->lineHeight = (int)(SCREEN_HEIGHT / ray->perpWallDist) * 1.2;
 	data->drawStart = -(data->lineHeight) / 2 + SCREEN_HEIGHT / 2;
 	data->drawEnd = (data->lineHeight) / 2 + SCREEN_HEIGHT / 2;
 	if (data->drawStart < 0)
