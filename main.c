@@ -131,10 +131,10 @@ int main(int ac, char **av)
 	// params.window = mlx_new_window(params.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	// free_parse(game);
 	load_textures(game);
-	mlx_hook(game->params.window, 2, 1L << 0, handle_pressed, &game);
-	mlx_hook(game->params.window, 3, 1L << 1, handle_released, &game);
-	mlx_hook(game->params.window, 17, 1L << 17, close_window, &game);
-	mlx_loop_hook(game->params.mlx, draw, &game);
+	mlx_hook(game->params.window, 2, 1L << 0, handle_pressed, game);
+	mlx_hook(game->params.window, 3, 1L << 1, handle_released, game);
+	mlx_hook(game->params.window, 17, 1L << 17, close_window, game);
+	mlx_loop_hook(game->params.mlx, draw, game);
 	mlx_loop(game->params.mlx);
 	return (0);
 }
