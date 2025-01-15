@@ -50,10 +50,9 @@ void	init_map(t_game *game, t_map *map)
 		}
 		i++;
 	}
-	find_player_position(game);
 }
 
-int	init_render2(t_render *params)
+int	init_render(t_render *params)
 {
 	params->mlx = mlx_init();
 	if (!params->mlx)
@@ -98,6 +97,7 @@ void	init_game(t_game **game)
 
 void	init_player(t_game *game)
 {
+	find_player_position(game);
 	if (game->parser.player_facing == NORTH)
 	{
 		game->dirX = -1;
@@ -129,10 +129,10 @@ int	main(int ac, char **av)
 	init_game(&game);
 	if (!game)
 		return (printf("Error: Failed to initialize game\n"), 1);
-	init_render2(&game->render);
 	parser(av[1], game);
 	if (parsing_map(game))
 		return (free_parse(game), 1);
+	init_render(&game->render);
 	printf("napoli\n");
 	init_map(game, game->map);
 	init_player(game);

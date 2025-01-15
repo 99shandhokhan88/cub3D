@@ -42,7 +42,7 @@ typedef struct s_map_copy
 
 int			my_error(char **av);
 void		parser(char *filename, t_game *game);
-void		check_file(char *file);
+void		check_file(t_game *game, char *file);
 void		check_cub(t_file **init, char *file);
 void		parsing_handle_escape(t_file *file);
 void		free_struct(t_file *init);

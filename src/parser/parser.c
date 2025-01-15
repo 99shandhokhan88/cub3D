@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-void	check_file(char *file)
+void	check_file(t_game *game, char *file)
 {
 	char	*ext;
 	size_t	len;
@@ -8,7 +8,7 @@ void	check_file(char *file)
 	ext = ft_strrchr(file, '.');
 	if (ext == 0)
 	{
-		printf(RED BOLD "Error\n" RESET "Wrong filename\n");
+		parser_errors(game, "Wrong filename\n");
 		exit(EXIT_FAILURE);
 	}
 	len = ft_strlen(ext);
@@ -16,7 +16,7 @@ void	check_file(char *file)
 		len = 4;
 	if (!ext || ft_strncmp(ext, ".cub", len) != 0 || len == 0)
 	{
-		printf(RED BOLD "Error\n" RESET "Wrong filename\n");
+		parser_errors(game, "Wrong filename\n");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -62,7 +62,7 @@ void	check_inside_char(t_game *game, t_textures *textures)
 
 void	parser(char *filename, t_game *game)
 {
-	check_file(filename);
+	check_file(game, filename);
 	check_cub(&game->parser.init, filename);
 	init_empty(game->parser.init);
 	struct_filler(game, game->parser.init);

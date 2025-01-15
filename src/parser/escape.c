@@ -36,15 +36,22 @@ void	parser_errors(t_game *game, char *message)
 	if (game != NULL)
 	{
 		free_struct(game->parser.init);
-		// free(game->textures.north.path);
-		// free(game->textures.south.path);
-		// free(game->textures.east.path);
-		// free(game->textures.west.path);
 		if (game->parsed_map)
 		{
 			while (game->parsed_map[++i])
 				free(game->parsed_map[i]);
 			free(game->parsed_map);
+		}
+		if (game->map)
+		{
+			if (game->map->grid)
+			{
+				i = -1;
+				while (game->map->grid[++i])
+					free(game->map->grid[i]);
+				free(game->map->grid);
+			}
+			free(game->map);
 		}
 		free(game);
 	}

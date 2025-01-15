@@ -24,10 +24,5 @@ void	check_cub(t_file **init, char *file)
 		lstadd_back(init, new);
 		line_map = get_next_line_map(fd);
 	}
-	// if (errno != 0)
-	//{
-	//	printf("BARIIIII\n");
-	//	parsing_handle_escape(*init);
-	// }
 	close(fd);
 }
