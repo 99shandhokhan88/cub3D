@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-void	raycasting(t_game *game, t_params *params)
+void	raycasting(t_game *game, t_render *params)
 {
 	int		x;
 	t_ray	ray;

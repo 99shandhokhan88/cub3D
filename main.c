@@ -1,5 +1,28 @@
 #include "include/cub3D.h"
 
+void	find_player_position(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (game->parsed_map[i])
+	{
+		j = 0;
+		while (game->parsed_map[i][j])
+		{
+			if (game->parsed_map[i][j] == 'N' || game->parsed_map[i][j] == 'S' || game->parsed_map[i][j] == 'E' || game->parsed_map[i][j] == 'W')
+			{
+				game->posX = i + 0.5;
+				game->posY = j + 0.5;
+				return;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 void transfer_parsed_data(t_game *game)
 {
 	// Transfer map data
@@ -20,51 +43,10 @@ void transfer_parsed_data(t_game *game)
 		}
 	}
 
-	// Set initial player position and direction
-	for (int i = 0; i < game->map->height; i++)
-	{
-		for (int j = 0; j < game->map->width; j++)
-		{
-			if (game->parsed_map[i][j] == 'N' || game->parsed_map[i][j] == 'S' || game->parsed_map[i][j] == 'E' || game->parsed_map[i][j] == 'W')
-			{
-				game->posX = i + 0.5;
-				game->posY = j + 0.5;
-
-				// Set initial direction and plane based on player orientation
-				switch (game->parsed_map[i][j])
-				{
-				case 'N':
-					game->dirX = -1;
-					game->dirY = 0;
-					game->planeX = 0;
-					game->planeY = 0.66;
-					break;
-				case 'S':
-					game->dirX = 1;
-					game->dirY = 0;
-					game->planeX = 0;
-					game->planeY = -0.66;
-					break;
-				case 'E':
-					game->dirX = 0;
-					game->dirY = 1;
-					game->planeX = 0.66;
-					game->planeY = 0;
-					break;
-				case 'W':
-					game->dirX = 0;
-					game->dirY = -1;
-					game->planeX = -0.66;
-					game->planeY = 0;
-					break;
-				}
-				break;
-			}
-		}
-	}
+	find_player_position(game);
 }
 
-int init_params2(t_params *params)
+int init_render2(t_render *params)
 {
 	params->mlx = mlx_init();
 	if (!params->mlx)
@@ -110,6 +92,38 @@ void	init_game(t_game **game)
 	}
 }
 
+void	init_player(t_game *game)
+{
+	if (game->parser.player_facing == NORTH)
+	{
+		game->dirX = -1;
+		game->dirY = 0;
+		game->planeX = 0;
+		game->planeY = 0.66;
+	}
+	else if (game->parser.player_facing == SOUTH)
+	{
+		game->dirX = 1;
+		game->dirY = 0;
+		game->planeX = 0;
+		game->planeY = -0.66;
+	}
+	else if (game->parser.player_facing == EAST)
+	{
+		game->dirX = 0;
+		game->dirY = 1;
+		game->planeX = 0.66;
+		game->planeY = 0;
+	}
+	else if (game->parser.player_facing == WEST)
+	{
+		game->dirX = 0;
+		game->dirY = -1;
+		game->planeX = -0.66;
+		game->planeY = 0;
+	}
+}
+
 int main(int ac, char **av)
 {
 	t_game	*game;
@@ -119,7 +133,7 @@ int main(int ac, char **av)
 	init_game(&game);
 	if (!game)
 		return (printf("Error: Failed to initialize game\n"), 1);
-	init_params2(&game->params);
+	init_render2(&game->render);
 	parser(av[1], game);
 	if (parsing_map(game))
 		return (free_parse(game), 1);
@@ -127,14 +141,15 @@ int main(int ac, char **av)
 	printf("napoli\n");
 	// TRANSFER PARSED DATA TO RAYCASTING STRUCTURES
 	transfer_parsed_data(game);
+	init_player(game);
 	// params.mlx = mlx_init();
 	// params.window = mlx_new_window(params.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
 	// free_parse(game);
 	load_textures(game);
-	mlx_hook(game->params.window, 2, 1L << 0, handle_pressed, game);
-	mlx_hook(game->params.window, 3, 1L << 1, handle_released, game);
-	mlx_hook(game->params.window, 17, 1L << 17, close_window, game);
-	mlx_loop_hook(game->params.mlx, draw, game);
-	mlx_loop(game->params.mlx);
+	mlx_hook(game->render.window, 2, 1L << 0, handle_pressed, game);
+	mlx_hook(game->render.window, 3, 1L << 1, handle_released, game);
+	mlx_hook(game->render.window, 17, 1L << 17, close_window, game);
+	mlx_loop_hook(game->render.mlx, draw, game);
+	mlx_loop(game->render.mlx);
 	return (0);
 }

@@ -2,14 +2,14 @@
 
 int	check_pos(char c, t_parser *parsed)
 {
-	if (c == 'N' && parsed->player_position == 0)
-		parsed->player_position = NORTH;
-	else if (c == 'S' && parsed->player_position == 0)
-		parsed->player_position = SOUTH;
-	else if (c == 'E' && parsed->player_position == 0)
-		parsed->player_position = EAST;
-	else if (c == 'W' && parsed->player_position == 0)
-		parsed->player_position = WEST;
+	if (c == 'N' && parsed->player_facing == 0)
+		parsed->player_facing = NORTH;
+	else if (c == 'S' && parsed->player_facing == 0)
+		parsed->player_facing = SOUTH;
+	else if (c == 'E' && parsed->player_facing == 0)
+		parsed->player_facing = EAST;
+	else if (c == 'W' && parsed->player_facing == 0)
+		parsed->player_facing = WEST;
 	else if (c != '\0' && c != '1' && c != '0' && c != '\n' && c != ' ' && c != '	')
 		return (1);
 	return (0);

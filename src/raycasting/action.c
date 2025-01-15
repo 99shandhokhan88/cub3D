@@ -3,19 +3,19 @@
 int	handle_pressed(int key, t_game *game)
 {
 	if (key == KEY_W)
-		game->params.keys.w = true;
+		game->render.keys.w = true;
 	else if (key == KEY_S)
-		game->params.keys.s = true;
+		game->render.keys.s = true;
 	else if (key == KEY_A)
-		game->params.keys.a = true;
+		game->render.keys.a = true;
 	else if (key == KEY_D)
-		game->params.keys.d = true;
+		game->render.keys.d = true;
 	else if (key == KEY_LEFT)
-		game->params.keys.left = true;
+		game->render.keys.left = true;
 	else if (key == KEY_RIGHT)
-		game->params.keys.right = true;
+		game->render.keys.right = true;
 	else if (key == KEY_SHIFT)
-		game->params.keys.shift = true;
+		game->render.keys.shift = true;
 	else if (key == KEY_ESC || key == KEY_Q)
 		ft_exit(game, 0);
 	return (0);
@@ -24,23 +24,23 @@ int	handle_pressed(int key, t_game *game)
 int	handle_released(int key, t_game *game)
 {
 	if (key == KEY_W)
-		game->params.keys.w = false;
+		game->render.keys.w = false;
 	else if (key == KEY_S)
-		game->params.keys.s = false;
+		game->render.keys.s = false;
 	else if (key == KEY_A)
-		game->params.keys.a = false;
+		game->render.keys.a = false;
 	else if (key == KEY_D)
-		game->params.keys.d = false;
+		game->render.keys.d = false;
 	else if (key == KEY_LEFT)
-		game->params.keys.left = false;
+		game->render.keys.left = false;
 	else if (key == KEY_RIGHT)
-		game->params.keys.right = false;
+		game->render.keys.right = false;
 	else if (key == KEY_SHIFT)
-		game->params.keys.shift = false;
+		game->render.keys.shift = false;
 	return (0);
 }
 
-int	move_player(t_game *game, t_params *params)
+int	move_player(t_game *game, t_render *params)
 {
 	double	move_speed;
 	int		run_mul;

@@ -7,7 +7,7 @@ void	load_single_texture(t_game *game, t_texture *texture, char *path)
 		printf("Error: Empty texture path\n");
 		ft_exit(game, 1);
 	}
-	texture->img = mlx_xpm_file_to_image(game->params.mlx, path,
+	texture->img = mlx_xpm_file_to_image(game->render.mlx, path,
 										 &texture->width, &texture->height);
 	if (!texture->img)
 	{
@@ -21,7 +21,7 @@ void	load_single_texture(t_game *game, t_texture *texture, char *path)
 	if (!texture->addr)
 	{
 		printf("Error: Failed to get texture data address: %s\n", path);
-		mlx_destroy_image(game->params.mlx, texture->img);
+		mlx_destroy_image(game->render.mlx, texture->img);
 		ft_exit(game, 1);
 	}
 }

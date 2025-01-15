@@ -48,7 +48,7 @@ int	calculate_tex_x(t_wall_slice_data *data, t_ray *ray)
 	return (tex_x);
 }
 
-void	draw_wall_slice(t_game *game, t_params *params, t_ray *ray, int x, int y)
+void	draw_wall_slice(t_game *game, t_render *params, t_ray *ray, int x, int y)
 {
 	t_wall_slice_data	data;
 	double				step;

@@ -55,9 +55,9 @@ void	render_floor_ceiling(unsigned int *img_data, t_colors *colors)
 
 int	draw(t_game *game)
 {
-	t_params	*params;
+	t_render	*params;
 
-	params = &game->params;
+	params = &game->render;
 	if (!params || !params->mlx || !params->window || !params->img || !params->img_data)
 	{
 		printf("Error: Invalid parameters in draw function\n");
