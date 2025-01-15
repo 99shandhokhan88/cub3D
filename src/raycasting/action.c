@@ -42,24 +42,22 @@ int	handle_released(int key, t_game *game)
 
 int	move_player(t_game *game, t_render *params)
 {
-	double	move_speed;
 	int		run_mul;
 
 	run_mul = 1;
 	if (params->keys.shift)
 		run_mul = 3;
-	move_speed = MOVE_SPEED * run_mul;
 	if (params->keys.w)
-		move_forward(game, move_speed);
+		move_forward(game, MOVE_SPEED * run_mul);
 	if (params->keys.s)
-		move_backward(game, move_speed);
+		move_backward(game, MOVE_SPEED * run_mul);
 	if (params->keys.a)
-		move_left(game, move_speed);
+		move_left(game, MOVE_SPEED * run_mul);
 	if (params->keys.d)
-		move_right(game, move_speed);
+		move_right(game, MOVE_SPEED * run_mul);
 	if (params->keys.left)
-		rotate_player(game, ROTATE_SPEED);
+		rotate_player(game, ROTATE_SPEED * run_mul);
 	if (params->keys.right)
-		rotate_player(game, -ROTATE_SPEED);
+		rotate_player(game, -ROTATE_SPEED * run_mul);
 	return (0);
 }

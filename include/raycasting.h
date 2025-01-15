@@ -17,7 +17,6 @@ typedef struct s_parser
 {
 	t_file				*init;
 	int					player_facing;
-	int					len_y;
 }	t_parser;
 
 typedef struct s_color
