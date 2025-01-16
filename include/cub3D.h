@@ -35,6 +35,10 @@
 # define MOVE_SPEED 0.021
 # define ROTATE_SPEED 0.021
 
+# define MINI_P_COLOR 0x0000FF
+# define MINI_WALL_COLOR 0xFF0000
+# define MINI_EMPTY_COLOR 0x00FF00
+
 # define UP 1
 # define DOWN 2
 # define LEFT 3
@@ -58,5 +62,11 @@ typedef enum e_keys
 	KEY_Q = 113,
 	KEY_SHIFT = 65505,
 }	t_keys;
+
+typedef struct s_point
+{
+	int	x;
+	int	y;
+}	t_point;
 
 #endif
