@@ -45,6 +45,70 @@ void	render_floor_ceiling(unsigned int *img_data, t_colors *colors)
 	}
 }
 
+void	square(t_game *game, int x, int y, int c)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < TILE_SIZE)
+	{
+		j = 0;
+		while (j < TILE_SIZE)
+		{
+			if (c == 1)
+				game->render.img_data[(y * TILE_SIZE + j) * SCREEN_WIDTH
+					+ x * TILE_SIZE + i] = 0xFF0000;
+			else if (c == 0)
+				game->render.img_data[(y * TILE_SIZE + j) * SCREEN_WIDTH
+					+ x * TILE_SIZE + i] = 0x00FF00;
+			j++;
+		}
+		i++;
+	}
+}
+
+void	draw_player(t_game *game)
+{
+	int	x;
+	int	y;
+	int	i;
+	int	j;
+
+	x = game->posY * TILE_SIZE - 1;
+	y = game->posX * TILE_SIZE - 1;
+	i = 0;
+	while (i < 3)
+	{
+		j = 0;
+		while (j < 3)
+		{
+			game->render.img_data[(y + i) * SCREEN_WIDTH + (x + j)] = 0x0000FF;
+			j++;
+		}
+		i++;
+	}
+}
+
+void	draw_minimap(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < game->map->height)
+	{
+		x = 0;
+		while (x < game->map->width)
+		{
+			square(game, x, y, game->map->grid[y][x]);
+			x++;
+		}
+		y++;
+	}
+	draw_player(game);
+}
+
 int	draw(t_game *game)
 {
 	t_render	*params;
@@ -61,6 +125,7 @@ int	draw(t_game *game)
 		SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(unsigned int));
 	render_floor_ceiling(params->img_data, &game->colors);
 	raycasting(game, params);
+	draw_minimap(game);
 	mlx_put_image_to_window(params->mlx, params->window, params->img, 0, 0);
 	return (0);
 }

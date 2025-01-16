@@ -30,6 +30,7 @@
 # define SCREEN_HEIGHT 720
 # define MAP_WIDTH 38
 # define MAP_HEIGHT 38
+# define TILE_SIZE 10
 
 # define MOVE_SPEED 0.021
 # define ROTATE_SPEED 0.021
