@@ -84,8 +84,8 @@ typedef struct s_render
 
 typedef struct s_game
 {
-	double		posX;
-	double		posY;
+	double		pos_x;
+	double		pos_y;
 	double		dirX;
 	double		dirY;
 	double		planeX;
@@ -103,8 +103,8 @@ typedef struct s_ray
 	double	cameraX;
 	double	deltaDistX;
 	double	deltaDistY;
-	int		mapX;
-	int		mapY;
+	int		map_y;
+	int		map_x;
 	double	perpWallDist;
 	double	rayDirX;
 	double	rayDirY;

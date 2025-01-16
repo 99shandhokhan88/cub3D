@@ -5,23 +5,23 @@ void	advance_ray(t_ray *ray)
 	if (ray->sideDistX < ray->sideDistY)
 	{
 		ray->sideDistX += ray->deltaDistX;
-		ray->mapX += ray->stepX;
+		ray->map_y += ray->stepX;
 		ray->side = 0;
 	}
 	else
 	{
 		ray->sideDistY += ray->deltaDistY;
-		ray->mapY += ray->stepY;
+		ray->map_x += ray->stepY;
 		ray->side = 1;
 	}
 }
 
 int	check_hit(t_game *game, t_ray *ray)
 {
-	if (ray->mapX >= 0 && ray->mapY >= 0 && ray->mapX < game->map->height
-		&& ray->mapY < game->map->width)
+	if (ray->map_y >= 0 && ray->map_x >= 0 && ray->map_y < game->map->height
+		&& ray->map_x < game->map->width)
 	{
-		if (game->map->grid[ray->mapX][ray->mapY] == 1)
+		if (game->map->grid[ray->map_y][ray->map_x] == 1)
 			return (1);
 	}
 	else

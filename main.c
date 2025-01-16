@@ -16,8 +16,8 @@ void	find_player_position(t_game *game)
 				|| game->parsed_map[i][j] == 'E'
 				|| game->parsed_map[i][j] == 'W')
 			{
-				game->posX = i + 0.5;
-				game->posY = j + 0.5;
+				game->pos_y = i + 0.5;
+				game->pos_x = j + 0.5;
 				return ;
 			}
 			j++;

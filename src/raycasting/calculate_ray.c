@@ -5,8 +5,8 @@ void	initialize_ray(t_game *game, t_ray *ray, int x)
 	ray->cameraX = 2 * x / (double)SCREEN_WIDTH - 1;
 	ray->rayDirX = game->dirX + game->planeX * ray->cameraX;
 	ray->rayDirY = game->dirY + game->planeY * ray->cameraX;
-	ray->mapX = (int)game->posX;
-	ray->mapY = (int)game->posY;
+	ray->map_y = (int)game->pos_y;
+	ray->map_x = (int)game->pos_x;
 	if (ray->rayDirX == 0)
 		ray->deltaDistX = 1e30;
 	else
@@ -22,22 +22,22 @@ void	calculate_step_and_side(t_game *game, t_ray *ray)
 	if (ray->rayDirX < 0)
 	{
 		ray->stepX = -1;
-		ray->sideDistX = (game->posX - ray->mapX) * ray->deltaDistX;
+		ray->sideDistX = (game->pos_y - ray->map_y) * ray->deltaDistX;
 	}
 	else
 	{
 		ray->stepX = 1;
-		ray->sideDistX = (ray->mapX + 1.0 - game->posX) * ray->deltaDistX;
+		ray->sideDistX = (ray->map_y + 1.0 - game->pos_y) * ray->deltaDistX;
 	}
 	if (ray->rayDirY < 0)
 	{
 		ray->stepY = -1;
-		ray->sideDistY = (game->posY - ray->mapY) * ray->deltaDistY;
+		ray->sideDistY = (game->pos_x - ray->map_x) * ray->deltaDistY;
 	}
 	else
 	{
 		ray->stepY = 1;
-		ray->sideDistY = (ray->mapY + 1.0 - game->posY) * ray->deltaDistY;
+		ray->sideDistY = (ray->map_x + 1.0 - game->pos_x) * ray->deltaDistY;
 	}
 }
 

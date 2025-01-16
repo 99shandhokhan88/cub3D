@@ -16,9 +16,9 @@ double	calculate_wall_x(t_game *game, t_ray *ray)
 	double	wall_x;
 
 	if (ray->side == 0)
-		wall_x = game->posY + ray->perpWallDist * ray->rayDirY;
+		wall_x = game->pos_x + ray->perpWallDist * ray->rayDirY;
 	else
-		wall_x = game->posX + ray->perpWallDist * ray->rayDirX;
+		wall_x = game->pos_y + ray->perpWallDist * ray->rayDirX;
 	return (wall_x - floor(wall_x));
 }
 

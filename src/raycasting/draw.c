@@ -75,8 +75,8 @@ void	draw_player(t_game *game)
 	int	i;
 	int	j;
 
-	x = game->posY * TILE_SIZE - 1;
-	y = game->posX * TILE_SIZE - 1;
+	x = game->pos_x * TILE_SIZE - 1;
+	y = game->pos_y * TILE_SIZE - 1;
 	i = 0;
 	while (i < 3)
 	{
