@@ -19,28 +19,29 @@ void	free_map(t_map *map)
 	free(map);
 }
 
+void	free_textures_path(t_textures *textures)
+{
+	if (textures->north.path)
+		free(textures->north.path);
+	if (textures->south.path)
+		free(textures->south.path);
+	if (textures->east.path)
+		free(textures->east.path);
+	if (textures->west.path)
+		free(textures->west.path);
+}
+
 void	free_textures(t_game *game)
 {
+	free_textures_path(&game->textures);
 	if (game->textures.north.img)
-	{
 		mlx_destroy_image(game->render.mlx, game->textures.north.img);
-		free(game->textures.north.path);
-	}
 	if (game->textures.south.img)
-	{
 		mlx_destroy_image(game->render.mlx, game->textures.south.img);
-		free(game->textures.south.path);
-	}
 	if (game->textures.east.img)
-	{
 		mlx_destroy_image(game->render.mlx, game->textures.east.img);
-		free(game->textures.east.path);
-	}
 	if (game->textures.west.img)
-	{
 		mlx_destroy_image(game->render.mlx, game->textures.west.img);
-		free(game->textures.west.path);
-	}
 	if (game->render.img)
 		mlx_destroy_image(game->render.mlx, game->render.img);
 }

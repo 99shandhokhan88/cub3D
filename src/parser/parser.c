@@ -28,6 +28,7 @@ void	free_parse(t_game *game)
 	free(game->textures.south.path);
 	free(game->textures.west.path);
 	free_map2(game->parsed_map);
+	free(game->map);
 	free(game);
 	game = NULL;
 }
@@ -64,7 +65,7 @@ void	parser(char *filename, t_game *game)
 {
 	check_file(game, filename);
 	check_cub(&game->parser.init, filename);
-	init_empty(game->parser.init);
+	init_empty(game, game->parser.init);
 	struct_filler(game, game->parser.init);
 	free_struct(game->parser.init);
 	check_inside_char(game, &game->textures);

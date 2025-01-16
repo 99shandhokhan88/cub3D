@@ -42,17 +42,10 @@ int	size_lst(t_file *lst)
 	return (check);
 }
 
-void	init_empty(t_file *init)
+void	init_empty(t_game *game, t_file *init)
 {
 	if (back_slash_trimmer(init) == 1)
-	{
-		printf(RED BOLD "Error\n" RESET);
-		printf("Empty file\n");
-		exit(0);
-	}
+		parser_errors(game, "Empty file\n");
 	if (size_lst(init) < 9)
-	{
-		free_struct(init);
-		parser_errors(NULL, "File too small\n");
-	}
+		parser_errors(game, "File too small\n");
 }
