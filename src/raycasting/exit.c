@@ -12,7 +12,7 @@ void	free_map(t_map *map)
 
 	i = 0;
 	if (!map)
-		return;
+		return ;
 	while (map->height > i)
 		free(map->grid[i++]);
 	free(map->grid);

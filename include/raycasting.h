@@ -122,7 +122,7 @@ typedef struct s_wall_slice_data
 	int			drawEnd;
 	double		wallX;
 	int			texX;
-	t_texture	*current_texture;
+	t_texture	*curr_texture;
 }	t_wall_slice_data;
 
 int		handle_pressed(int key, t_game *game);
@@ -135,7 +135,7 @@ void	calculate_wall_slice_dimensions(t_ray *ray, t_wall_slice_data *data);
 double	calculate_wall_x(t_game *game, t_ray *ray);
 t_texture	*select_wall_texture(t_game *game, t_ray *ray);
 int		calculate_tex_x(t_wall_slice_data *data, t_ray *ray);
-void	draw_wall_slice(t_game *game, t_render *params, t_ray *ray, int x, int y);
+void	draw_wall_slice(t_game *game, t_ray *ray, int x, int y);
 void	render_floor_ceiling(unsigned int *img_data, t_colors *colors);
 int		draw(t_game *game);
 int		my_error(char **av);

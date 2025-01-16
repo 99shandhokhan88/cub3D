@@ -2,7 +2,9 @@
 
 int	around_checker(char **map, int kind, int i, int j)
 {
-	if (map[i][j] == '\0' || map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
+	if (map[i][j] == '\0' || map[i][j] == '0'
+		|| map[i][j] == 'N' || map[i][j] == 'S'
+		|| map[i][j] == 'W' || map[i][j] == 'E')
 		return (1);
 	if (kind == UP || kind == DOWN)
 	{
@@ -84,7 +86,7 @@ int	right_check(char **copy_map)
 		if (copy_map[i][ft_strlen(copy_map[i]) - 1] == ' ')
 		{
 			if (check_correct_walls(copy_map, i,
-									ft_strlen(copy_map[i]) - 2, RIGHT) == 1)
+					ft_strlen(copy_map[i]) - 2, RIGHT) == 1)
 				return (1);
 		}
 		i++;

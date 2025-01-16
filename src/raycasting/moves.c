@@ -9,7 +9,8 @@ void	rotate_player(t_game *game, double rot_speed)
 	old_plane_x = game->planeX;
 	game->dirX = game->dirX * cos(rot_speed) - game->dirY * sin(rot_speed);
 	game->dirY = old_dir_x * sin(rot_speed) + game->dirY * cos(rot_speed);
-	game->planeX = game->planeX * cos(rot_speed) - game->planeY * sin(rot_speed);
+	game->planeX = game->planeX * cos(rot_speed) \
+		- game->planeY * sin(rot_speed);
 	game->planeY = old_plane_x * sin(rot_speed) + game->planeY * cos(rot_speed);
 }
 

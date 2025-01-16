@@ -10,7 +10,8 @@ int	check_pos(char c, t_parser *parsed)
 		parsed->player_facing = EAST;
 	else if (c == 'W' && parsed->player_facing == 0)
 		parsed->player_facing = WEST;
-	else if (c != '\0' && c != '1' && c != '0' && c != '\n' && c != ' ' && c != '	')
+	else if (c != '\0' && c != '1' && c != '0'
+		&& c != '\n' && c != ' ' && c != '	')
 		return (1);
 	return (0);
 }

@@ -32,38 +32,38 @@ int	direction(t_game *game, t_file *init, char *dir, char **path)
 int	fill_ceiling(t_game *game, t_file *init, int *index)
 {
 	game->colors.ceiling.r = ft_atoi(&init->line[*index]);
-	if (game->colors.ceiling.r > 255 || game->colors.ceiling.r < 0 || !ft_isdigit(init->line[*index]))
+	if (game->colors.ceiling.r > 255 || game->colors.ceiling.r < 0
+		|| !ft_isdigit(init->line[*index]))
 		parser_errors(game, "Wrong red code\n");
-
 	*index = skip_spaces(*index, game, init);
 	game->colors.ceiling.g = ft_atoi(&init->line[*index]);
-	if (game->colors.ceiling.g > 255 || game->colors.ceiling.g < 0 || !ft_isdigit(init->line[*index]))
+	if (game->colors.ceiling.g > 255 || game->colors.ceiling.g < 0
+		|| !ft_isdigit(init->line[*index]))
 		parser_errors(game, "Wrong green code\n");
-
 	*index = skip_spaces(*index, game, init);
 	game->colors.ceiling.b = ft_atoi(&init->line[*index]);
-	if (game->colors.ceiling.b > 255 || game->colors.ceiling.b < 0 || !ft_isdigit(init->line[*index]))
+	if (game->colors.ceiling.b > 255 || game->colors.ceiling.b < 0
+		|| !ft_isdigit(init->line[*index]))
 		parser_errors(game, "Wrong blue code\n");
-
 	return (0);
 }
 
 int	fill_floor(t_game *game, t_file *init, int *index)
 {
 	game->colors.floor.r = ft_atoi(&init->line[*index]);
-	if (game->colors.floor.r > 255 || game->colors.floor.r < 0 || !ft_isdigit(init->line[*index]))
+	if (game->colors.floor.r > 255 || game->colors.floor.r < 0
+		|| !ft_isdigit(init->line[*index]))
 		parser_errors(game, "Wrong red code\n");
-
 	*index = skip_spaces(*index, game, init);
 	game->colors.floor.g = ft_atoi(&init->line[*index]);
-	if (game->colors.floor.g > 255 || game->colors.floor.g < 0 || !ft_isdigit(init->line[*index]))
+	if (game->colors.floor.g > 255 || game->colors.floor.g < 0
+		|| !ft_isdigit(init->line[*index]))
 		parser_errors(game, "Wrong green code\n");
-
 	*index = skip_spaces(*index, game, init);
 	game->colors.floor.b = ft_atoi(&init->line[*index]);
-	if (game->colors.floor.b > 255 || game->colors.floor.b < 0 || !ft_isdigit(init->line[*index]))
+	if (game->colors.floor.b > 255 || game->colors.floor.b < 0
+		|| !ft_isdigit(init->line[*index]))
 		parser_errors(game, "Wrong blue code\n");
-
 	return (0);
 }
 

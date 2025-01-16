@@ -15,7 +15,7 @@ void	raycasting(t_game *game, t_render *params)
 	{
 		calculate_ray(game, &ray, x);
 		perform_dda(game, &ray);
-		draw_wall_slice(game, params, &ray, x, 0);
+		draw_wall_slice(game, &ray, x, 0);
 		x++;
 	}
 }

@@ -68,11 +68,11 @@ int	skip_spaces(int i, t_game *game, t_file *init)
 	int	temp;
 
 	temp = i;
-	while (init->line[i] && init->line[i] != ',' &&
-		   ft_isdigit(init->line[i]))
+	while (init->line[i] && init->line[i] != ','
+		&& ft_isdigit(init->line[i]))
 		i++;
-	if (i - temp >= 4 || (ft_isdigit(init->line[i]) == 0 &&
-						  init->line[i] != ','))
+	if (i - temp >= 4
+		|| (ft_isdigit(init->line[i]) == 0 && init->line[i] != ','))
 		parser_errors(game, "error rgb code\n");
 	i++;
 	while (init->line[i] && init->line[i] == ' ')

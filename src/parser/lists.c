@@ -26,7 +26,7 @@ void	lstadd_back(t_file **lst, t_file *new)
 	t_file	*p;
 
 	if (lst == NULL || new == NULL)
-		return;
+		return ;
 	p = *lst;
 	if (*lst == NULL)
 		(*lst) = new;

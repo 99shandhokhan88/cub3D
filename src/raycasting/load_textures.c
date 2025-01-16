@@ -8,16 +8,16 @@ void	load_single_texture(t_game *game, t_texture *texture, char *path)
 		ft_exit(game, 1);
 	}
 	texture->img = mlx_xpm_file_to_image(game->render.mlx, path,
-										 &texture->width, &texture->height);
+			&texture->width, &texture->height);
 	if (!texture->img)
 	{
 		printf("Error: Failed to load texture: %s\n", path);
 		ft_exit(game, 1);
 	}
 	texture->addr = (unsigned int *)mlx_get_data_addr(texture->img,
-													  &texture->bits_per_pixel,
-													  &texture->size_line,
-													  &texture->endian);
+			&texture->bits_per_pixel,
+			&texture->size_line,
+			&texture->endian);
 	if (!texture->addr)
 	{
 		printf("Error: Failed to get texture data address: %s\n", path);

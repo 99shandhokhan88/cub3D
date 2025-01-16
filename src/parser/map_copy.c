@@ -59,7 +59,7 @@ void	last_line_copy(t_map_copy *map_copy, int i, char **map, int k)
 	{
 		free_map2(map_copy->copy_map);
 		map_copy->copy_map = NULL;
-		return;
+		return ;
 	}
 	while (map[i][++j] != '\n' && map[i][j])
 		map_copy->copy_map[i][j] = map[i][j];
