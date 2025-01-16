@@ -88,6 +88,7 @@ typedef struct s_game
 	t_colors	colors;
 	t_map		*map;
 	char		**parsed_map;
+	char		**map_copy;
 	t_render	render;
 	t_parser	parser;
 }	t_game;

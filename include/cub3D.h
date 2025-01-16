@@ -69,4 +69,6 @@ typedef struct s_point
 	int	y;
 }	t_point;
 
+void	print_map(char **copy_map);
+
 #endif

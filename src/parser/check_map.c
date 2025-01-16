@@ -6,6 +6,7 @@ int	parsing_map(t_game *game)
 	int		error;
 
 	matrix_copy = map_copy(game->parsed_map);
+	game->map_copy = matrix_copy;
 	if (matrix_copy == NULL || matrix_copy[0] == NULL)
 	{
 		printf("Error\n");

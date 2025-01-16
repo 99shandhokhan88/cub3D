@@ -60,6 +60,8 @@ void	ft_exit(t_game *game, int code)
 		free_map(game->map);
 	if (game->parsed_map)
 		free_map2(game->parsed_map);
+	if (game->map_copy)
+		free_map2(game->map_copy);
 	free(game);
 	exit(code);
 }

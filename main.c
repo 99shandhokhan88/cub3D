@@ -32,8 +32,9 @@ void	init_map(t_game *game, t_map *map)
 	int	j;
 
 	i = 0;
-	map->height = matrix_len(game->parsed_map);
-	map->width = find_max_line(game->parsed_map, NULL);
+	print_map(game->map_copy);
+	map->height = matrix_len(game->map_copy);
+	map->width = find_max_line(game->map_copy, NULL);
 	map->grid = (int **)ft_calloc(map->height, sizeof(int *));
 	while (i < map->height)
 	{
@@ -41,10 +42,13 @@ void	init_map(t_game *game, t_map *map)
 		map->grid[i] = (int *)ft_calloc(map->width, sizeof(int));
 		while (j < map->width)
 		{
-			if (j < (int)ft_strlen(game->parsed_map[i]))
+			if (j < (int)ft_strlen(game->map_copy[i]))
 			{
-				if (game->parsed_map[i][j] == '1')
+				if (game->map_copy[i][j] == '1')
 					map->grid[i][j] = 1;
+				else if (game->map_copy[i][j] == '2'
+					|| game->map_copy[i][j] == ' ' || game->map_copy[i][j] == '\t')
+					map->grid[i][j] = 2;
 			}
 			j++;
 		}
@@ -120,6 +124,26 @@ void	init_player(t_game *game)
 	}
 }
 
+void	print_grid(t_map *map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	printf("\nGrid:\n");
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width)
+		{
+			printf("%d", map->grid[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_game	*game;
@@ -135,6 +159,7 @@ int	main(int ac, char **av)
 	init_render(&game->render);
 	printf("napoli\n");
 	init_map(game, game->map);
+	print_grid(game->map);
 	init_player(game);
 	load_textures(game);
 	mlx_hook(game->render.window, 2, 1L << 0, handle_pressed, game);
