@@ -100,23 +100,23 @@ void	init_player(t_game *game)
 	find_player_position(game);
 	if (game->parser.player_facing == NORTH)
 	{
-		game->dirX = -1;
-		game->planeY = 0.66;
+		game->dir_x = -1;
+		game->plane_y = 0.66;
 	}
 	else if (game->parser.player_facing == SOUTH)
 	{
-		game->dirX = 1;
-		game->planeY = -0.66;
+		game->dir_x = 1;
+		game->plane_y = -0.66;
 	}
 	else if (game->parser.player_facing == EAST)
 	{
-		game->dirY = 1;
-		game->planeX = 0.66;
+		game->dir_y = 1;
+		game->plane_x = 0.66;
 	}
 	else if (game->parser.player_facing == WEST)
 	{
-		game->dirY = -1;
-		game->planeX = -0.66;
+		game->dir_y = -1;
+		game->plane_x = -0.66;
 	}
 }
 

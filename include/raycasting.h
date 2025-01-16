@@ -1,12 +1,6 @@
 #ifndef RAYCASTING_H
 # define RAYCASTING_H
 
-typedef struct s_map		t_map;
-typedef struct s_texture	t_texture;
-typedef struct s_textures	t_textures;
-typedef struct s_game		t_game;
-typedef struct s_render		t_render;
-
 typedef struct s_file
 {
 	char			*line;
@@ -86,10 +80,10 @@ typedef struct s_game
 {
 	double		pos_x;
 	double		pos_y;
-	double		dirX;
-	double		dirY;
-	double		planeX;
-	double		planeY;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
 	t_textures	textures;
 	t_colors	colors;
 	t_map		*map;
@@ -100,64 +94,66 @@ typedef struct s_game
 
 typedef struct s_ray
 {
-	double	cameraX;
-	double	deltaDistX;
-	double	deltaDistY;
+	double	camera_x;
+	double	delta_dist_x;
+	double	delta_dist_y;
 	int		map_y;
 	int		map_x;
-	double	perpWallDist;
-	double	rayDirX;
-	double	rayDirY;
+	double	perp_wall_dist;
+	double	ray_dir_x;
+	double	ray_dir_y;
 	int		side;
-	double	sideDistX;
-	double	sideDistY;
-	int		stepX;
-	int		stepY;
+	double	side_dist_x;
+	double	side_dist_y;
+	int		step_x;
+	int		step_y;
 }	t_ray;
 
 typedef struct s_wall_slice_data
 {
-	int			lineHeight;
-	int			drawStart;
-	int			drawEnd;
-	double		wallX;
-	int			texX;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	double		wall_x;
+	int			tex_x;
 	t_texture	*curr_texture;
 }	t_wall_slice_data;
 
-int		handle_pressed(int key, t_game *game);
-int		handle_released(int key, t_game *game);
-int		move_player(t_game *game, t_render *params);
-void	initialize_ray(t_game *game, t_ray *ray, int x);
-void	calculate_step_and_side(t_game *game, t_ray *ray);
-void	calculate_ray(t_game *game, t_ray *ray, int x);
-void	calculate_wall_slice_dimensions(t_ray *ray, t_wall_slice_data *data);
-double	calculate_wall_x(t_game *game, t_ray *ray);
-t_texture	*select_wall_texture(t_game *game, t_ray *ray);
-int		calculate_tex_x(t_wall_slice_data *data, t_ray *ray);
-void	draw_wall_slice(t_game *game, t_ray *ray, int x, int y);
-void	render_floor_ceiling(unsigned int *img_data, t_colors *colors);
-int		draw(t_game *game);
-int		my_error(char **av);
-int		close_window(t_game *game);
-void	free_textures(t_game *game);
-void	ft_exit(t_game *game, int code);
-void	load_single_texture(t_game *game, t_texture *texture, char *path);
-void	load_textures(t_game *game);
-void	rotate_player(t_game *game, double rot_speed);
-void	move_forward(t_game *game, double move_speed);
-void	move_backward(t_game *game, double move_speed);
-void	move_left(t_game *game, double move_speed);
-void	move_right(t_game *game, double move_speed);
-void	advance_ray(t_ray *ray);
-int		check_hit(t_game *game, t_ray *ray);
-void	progress_ray(t_game *game, t_ray *ray);
-void	calculate_wall_distance(t_ray *ray);
-void	perform_dda(t_game *game, t_ray *ray);
-void	prepare_texture_sampling(t_wall_slice_data *data,
-		double *step, double *texPos);
+int				handle_pressed(int key, t_game *game);
+int				handle_released(int key, t_game *game);
+int				move_player(t_game *game, t_render *params);
+void			initialize_ray(t_game *game, t_ray *ray, int x);
+void			calculate_step_and_side(t_game *game, t_ray *ray);
+void			calculate_ray(t_game *game, t_ray *ray, int x);
+void			calculate_wall_slice_dimensions(t_ray *ray,
+					t_wall_slice_data *data);
+double			calculate_wall_x(t_game *game, t_ray *ray);
+t_texture		*select_wall_texture(t_game *game, t_ray *ray);
+int				calculate_tex_x(t_wall_slice_data *data, t_ray *ray);
+void			draw_wall_slice(t_game *game, t_ray *ray, int x, int y);
+void			render_floor_ceiling(unsigned int *img_data, t_colors *colors);
+int				draw(t_game *game);
+int				my_error(char **av);
+int				close_window(t_game *game);
+void			free_textures(t_game *game);
+void			ft_exit(t_game *game, int code);
+void			load_single_texture(t_game *game,
+					t_texture *texture, char *path);
+void			load_textures(t_game *game);
+void			rotate_player(t_game *game, double rot_speed);
+void			move_forward(t_game *game, double move_speed);
+void			move_backward(t_game *game, double move_speed);
+void			move_left(t_game *game, double move_speed);
+void			move_right(t_game *game, double move_speed);
+void			advance_ray(t_ray *ray);
+int				check_hit(t_game *game, t_ray *ray);
+void			progress_ray(t_game *game, t_ray *ray);
+void			calculate_wall_distance(t_ray *ray);
+void			perform_dda(t_game *game, t_ray *ray);
+void			prepare_texture_sampling(t_wall_slice_data *data,
+					double *step, double *texPos);
 unsigned int	get_shaded_color(t_wall_slice_data *data,
-		int texY, int texX, t_ray *ray);
-void	raycasting(t_game *game, t_render *params);
+					int tex_y, int tex_x, t_ray *ray);
+void			raycasting(t_game *game, t_render *params);
 
 #endif

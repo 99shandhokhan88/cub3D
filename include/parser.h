@@ -8,38 +8,6 @@ typedef struct s_map_copy
 	int		j;
 }	t_map_copy;
 
-// typedef struct s_file
-// {
-// 	char			*line;
-// 	struct s_file	*next;
-// }	t_file;
-
-// typedef struct s_color
-// {
-// 	int		r;
-// 	int		g;
-// 	int		b;
-// }	t_color;
-
-// typedef struct s_textures_parse
-// {
-// 	char	*north;
-// 	char	*south;
-// 	char	*east;
-// 	char	*west;
-// }	t_textures_parse;
-
-// typedef struct s_parser
-// {
-// 	// char				**map;
-// 	// t_textures_parse	textures_parse;
-// 	// t_color				floor;
-// 	// t_color				ceiling;
-// 	t_file				*init;
-// 	int					player_position;
-// 	int					len_y;
-// }	t_parser;
-
 int			my_error(char **av);
 void		parser(char *filename, t_game *game);
 void		check_file(t_game *game, char *file);
@@ -56,7 +24,8 @@ int			back_slash_trimmer(t_file *init);
 void		parser_errors(t_game *game, char *message);
 void		struct_filler(t_game *game, t_file *init);
 int			direction(t_game *game, t_file *init, char *dir, char **path);
-int			background_fill(t_game *game, t_file *init, char platform, int *done);
+int			background_fill(t_game *game, t_file *init,
+				char platform, int *done);
 int			fill_floor(t_game *game, t_file *init, int *index);
 int			fill_ceiling(t_game *game, t_file *init, int *index);
 int			skip_spaces(int index, t_game *game, t_file *init);

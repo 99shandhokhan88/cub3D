@@ -2,16 +2,16 @@
 
 void	advance_ray(t_ray *ray)
 {
-	if (ray->sideDistX < ray->sideDistY)
+	if (ray->side_dist_x < ray->side_dist_y)
 	{
-		ray->sideDistX += ray->deltaDistX;
-		ray->map_y += ray->stepX;
+		ray->side_dist_x += ray->delta_dist_x;
+		ray->map_y += ray->step_x;
 		ray->side = 0;
 	}
 	else
 	{
-		ray->sideDistY += ray->deltaDistY;
-		ray->map_x += ray->stepY;
+		ray->side_dist_y += ray->delta_dist_y;
+		ray->map_x += ray->step_y;
 		ray->side = 1;
 	}
 }
@@ -44,9 +44,9 @@ void	progress_ray(t_game *game, t_ray *ray)
 void	calculate_wall_distance(t_ray *ray)
 {
 	if (ray->side == 0)
-		ray->perpWallDist = ray->sideDistX - ray->deltaDistX;
+		ray->perp_wall_dist = ray->side_dist_x - ray->delta_dist_x;
 	else
-		ray->perpWallDist = ray->sideDistY - ray->deltaDistY;
+		ray->perp_wall_dist = ray->side_dist_y - ray->delta_dist_y;
 }
 
 void	perform_dda(t_game *game, t_ray *ray)
