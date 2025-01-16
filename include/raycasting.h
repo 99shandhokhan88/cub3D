@@ -133,6 +133,7 @@ int				calculate_tex_x(t_wall_slice_data *data, t_ray *ray);
 void			draw_wall_slice(t_game *game, t_ray *ray, int x, int y);
 void			render_floor_ceiling(unsigned int *img_data, t_colors *colors);
 int				draw(t_game *game);
+void			draw_minimap(t_game *game);
 int				my_error(char **av);
 int				close_window(t_game *game);
 void			free_textures(t_game *game);

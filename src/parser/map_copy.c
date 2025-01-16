@@ -8,8 +8,9 @@ int	find_max_line(char **map, int *i)
 
 	check = 0;
 	j = 0;
-	k = (i) ? *i : 0; // Use a local index if i is NULL
-
+	k = 0;
+	if (i)
+		k = *i;
 	while (map[k])
 	{
 		j = 0;
@@ -18,7 +19,7 @@ int	find_max_line(char **map, int *i)
 		if (check < j)
 			check = j;
 		if (i)
-			*i = k + 1; // Update external index if provided
+			*i = k + 1;
 		k++;
 	}
 	return (check);
@@ -35,9 +36,11 @@ int	line_copy(t_map_copy *map_copy, int i, int j, char **map)
 			free_map2(map_copy->copy_map);
 			return (1);
 		}
-		while (map[map_copy->i][map_copy->j] != '\n' && map[map_copy->i][map_copy->j])
+		while (map[map_copy->i][map_copy->j] != '\n'
+			&& map[map_copy->i][map_copy->j])
 		{
-			map_copy->copy_map[map_copy->i][map_copy->j] = map[map_copy->i][map_copy->j];
+			map_copy->copy_map[map_copy->i][map_copy->j] = \
+					map[map_copy->i][map_copy->j];
 			map_copy->j++;
 		}
 		map_copy->j--;

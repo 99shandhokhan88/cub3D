@@ -33,7 +33,7 @@ void	init_map(t_game *game, t_map *map)
 
 	i = 0;
 	map->height = matrix_len(game->parsed_map);
-	map->width = find_max_line(game->parsed_map, 0);
+	map->width = find_max_line(game->parsed_map, NULL);
 	map->grid = (int **)ft_calloc(map->height, sizeof(int *));
 	while (i < map->height)
 	{

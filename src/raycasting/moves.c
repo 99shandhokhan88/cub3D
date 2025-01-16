@@ -11,7 +11,8 @@ void	rotate_player(t_game *game, double rot_speed)
 	game->dir_y = old_dir_x * sin(rot_speed) + game->dir_y * cos(rot_speed);
 	game->plane_x = game->plane_x * cos(rot_speed) \
 		- game->plane_y * sin(rot_speed);
-	game->plane_y = old_plane_x * sin(rot_speed) + game->plane_y * cos(rot_speed);
+	game->plane_y = old_plane_x * sin(rot_speed) \
+		+ game->plane_y * cos(rot_speed);
 }
 
 void	move_forward(t_game *game, double move_speed)

@@ -51,3 +51,20 @@ void	parser_errors(t_game *game, char *message)
 	printf("%s\n", message);
 	exit(EXIT_FAILURE);
 }
+
+void	free_map2(char **map)
+{
+	int	i;
+
+	i = 0;
+	if (map)
+	{
+		while (map[i])
+		{
+			free(map[i]);
+			map[i] = NULL;
+			i++;
+		}
+		free(map);
+	}
+}
