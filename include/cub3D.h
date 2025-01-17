@@ -37,6 +37,7 @@
 
 # define MINI_P_COLOR 0x0000FF
 # define MINI_WALL_COLOR 0xFF0000
+# define MINI_FORBIDDEN_COLOR 0x999999
 # define MINI_EMPTY_COLOR 0x00FF00
 
 # define UP 1
@@ -69,7 +70,7 @@ typedef struct s_point
 	int	y;
 }	t_point;
 
-void	print_map(char **copy_map);
+// void	print_map(char **copy_map);
 void	floodfill(t_game *game, int row, int col);
 void	check_flood(t_game *game);
 

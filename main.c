@@ -125,25 +125,25 @@ void	init_player(t_game *game)
 	}
 }
 
-void	print_grid(t_map *map)
-{
-	int	i;
-	int	j;
+// void	print_grid(t_map *map)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	printf("\nGrid:\n");
-	while (i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			printf("%d", map->grid[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}
+// 	i = 0;
+// 	printf("\nGrid:\n");
+// 	while (i < map->height)
+// 	{
+// 		j = 0;
+// 		while (j < map->width)
+// 		{
+// 			printf("%d", map->grid[i][j]);
+// 			j++;
+// 		}
+// 		printf("\n");
+// 		i++;
+// 	}
+// }
 
 int	main(int ac, char **av)
 {

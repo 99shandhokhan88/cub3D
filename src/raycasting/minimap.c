@@ -6,7 +6,7 @@
 /*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 18:03:10 by flo-dolc          #+#    #+#             */
-/*   Updated: 2025/01/16 18:03:12 by flo-dolc         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:37:47 by flo-dolc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ void	square(t_game *game, int x, int y, int c)
 			if (c == 1)
 				game->render.img_data[(y * TILE_SIZE + j) * SCREEN_WIDTH
 					+ x * TILE_SIZE + i] = MINI_WALL_COLOR;
+			if (c == 2)
+				game->render.img_data[(y * TILE_SIZE + j) * SCREEN_WIDTH
+					+ x * TILE_SIZE + i] = MINI_FORBIDDEN_COLOR;
 			else if (c == 0)
 				game->render.img_data[(y * TILE_SIZE + j) * SCREEN_WIDTH
 					+ x * TILE_SIZE + i] = MINI_EMPTY_COLOR;

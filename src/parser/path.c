@@ -94,18 +94,18 @@ int	right_check(char **copy_map)
 	return (0);
 }
 
-void	print_map(char **copy_map)
-{
-	int	i;
+// void	print_map(char **copy_map)
+// {
+// 	int	i;
 
-	i = 0;
-	printf("\nMap:\n");
-	while (copy_map[i])
-	{
-		printf("%s", copy_map[i]);
-		i++;
-	}
-}
+// 	i = 0;
+// 	printf("\nMap:\n");
+// 	while (copy_map[i])
+// 	{
+// 		printf("%s", copy_map[i]);
+// 		i++;
+// 	}
+// }
 
 int	border_check(char **copy_map)
 {
@@ -130,7 +130,5 @@ int	border_check(char **copy_map)
 	while (copy_map[j][++i + 1] != '\0')
 		if (check_correct_walls(copy_map, j, i, DOWN) == 1)
 			return (free_map2(copy_map), 1);
-	// print_map(copy_map);
-	// return (free_map2(copy_map), 0);
 	return (0);
 }
