@@ -5,7 +5,4 @@
 *.o
 *.a
 cub3D
-maps/
 minilibx/test/mlx-test
-textures/*/
-!textures/naples/

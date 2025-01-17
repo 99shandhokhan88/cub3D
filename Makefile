@@ -14,7 +14,7 @@ SRC =	$(wildcard $(RAYCASTING_DIR)/*.c) \
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g #-fsanitize=address
 IFLAGS = -I $(INC_DIR) -I $(MLX_DIR) -I $(LIBFT_DIR)
 LFLAGS = -L $(MLX_DIR) -lmlx -L $(LIBFT_DIR) -lft -lXext -lX11 -lm -lbsd
 
