@@ -70,5 +70,7 @@ typedef struct s_point
 }	t_point;
 
 void	print_map(char **copy_map);
+void	floodfill(t_game *game, int row, int col);
+void	check_flood(t_game *game);
 
 #endif

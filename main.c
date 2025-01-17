@@ -32,9 +32,11 @@ void	init_map(t_game *game, t_map *map)
 	int	j;
 
 	i = 0;
-	print_map(game->map_copy);
 	map->height = matrix_len(game->map_copy);
 	map->width = find_max_line(game->map_copy, NULL);
+	floodfill(game, game->pos_y, game->pos_x);
+	check_flood(game);
+	// print_map(game->map_copy);
 	map->grid = (int **)ft_calloc(map->height, sizeof(int *));
 	while (i < map->height)
 	{
@@ -46,8 +48,7 @@ void	init_map(t_game *game, t_map *map)
 			{
 				if (game->map_copy[i][j] == '1')
 					map->grid[i][j] = 1;
-				else if (game->map_copy[i][j] == '2'
-					|| game->map_copy[i][j] == ' ' || game->map_copy[i][j] == '\t')
+				else if (game->map_copy[i][j] == '2')
 					map->grid[i][j] = 2;
 			}
 			j++;
@@ -158,9 +159,9 @@ int	main(int ac, char **av)
 		return (free_parse(game), 1);
 	init_render(&game->render);
 	printf("napoli\n");
-	init_map(game, game->map);
-	print_grid(game->map);
 	init_player(game);
+	init_map(game, game->map);
+	// print_grid(game->map);
 	load_textures(game);
 	mlx_hook(game->render.window, 2, 1L << 0, handle_pressed, game);
 	mlx_hook(game->render.window, 3, 1L << 1, handle_released, game);
