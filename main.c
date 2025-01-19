@@ -57,32 +57,39 @@ void	init_map(t_game *game, t_map *map)
 	}
 }
 
-int	init_render(t_render *params)
+int	init_render(t_game *params)
 {
-	params->mlx = mlx_init();
-	if (!params->mlx)
+	params->render.mlx = mlx_init();
+	if (!params->render.mlx)
 		return (printf("Error: Failed to initialize mlx\n"), 1);
-	params->window = mlx_new_window(params->mlx,
+	params->render.window = mlx_new_window(params->render.mlx,
 			SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
-	if (!params->window)
+	if (!params->render.window)
 		return (printf("Error: Failed to create new window\n"), 1);
-	params->img = mlx_new_image(params->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	if (!params->img)
+	params->render.img = mlx_new_image(params->render.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	if (!params->render.img)
 		return (printf("Error: Failed to create new image\n"), 1);
-	params->img_data = (unsigned int *)mlx_get_data_addr(params->img,
-			&params->bits_per_pixel, &params->size_line, &params->endian);
-	if (!params->img_data)
+	params->render.img_data = (unsigned int *)mlx_get_data_addr(params->render.img,
+			&params->render.bits_per_pixel, &params->render.size_line, &params->render.endian);
+	if (!params->render.img_data)
 		return (printf("Error: Failed to get image data address\n"), 1);
-	params->bits_per_pixel = 32;
-	params->size_line = SCREEN_WIDTH * 4;
-	params->endian = 0;
-	params->keys.a = false;
-	params->keys.d = false;
-	params->keys.s = false;
-	params->keys.w = false;
-	params->keys.left = false;
-	params->keys.right = false;
-	params->keys.shift = false;
+	params->render.bits_per_pixel = 32;
+	params->render.size_line = SCREEN_WIDTH * 4;
+	params->render.endian = 0;
+	params->render.keys.a = false;
+	params->render.keys.d = false;
+	params->render.keys.s = false;
+	params->render.keys.w = false;
+	params->render.keys.left = false;
+	params->render.keys.right = false;
+	params->render.keys.shift = false;
+
+
+	//mlx_mouse_hide(params->render.mlx, params->render.window);
+
+   // mlx_hook(params->render.window, 6, 1L << 6, mouse_move, params);
+
+
 	return (0);
 }
 
@@ -125,48 +132,38 @@ void	init_player(t_game *game)
 	}
 }
 
-// void	print_grid(t_map *map)
-// {
-// 	int	i;
-// 	int	j;
 
-// 	i = 0;
-// 	printf("\nGrid:\n");
-// 	while (i < map->height)
-// 	{
-// 		j = 0;
-// 		while (j < map->width)
-// 		{
-// 			printf("%d", map->grid[i][j]);
-// 			j++;
-// 		}
-// 		printf("\n");
-// 		i++;
-// 	}
-// }
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	t_game	*game;
+    t_game *game;
 
-	if (ac != 2)
-		my_error(av);
-	init_game(&game);
-	if (!game)
-		return (printf("Error: Failed to initialize game\n"), 1);
-	parser(av[1], game);
-	if (parsing_map(game))
-		return (free_parse(game), 1);
-	init_render(&game->render);
-	printf("napoli\n");
-	init_player(game);
-	init_map(game, game->map);
-	// print_grid(game->map);
-	load_textures(game);
-	mlx_hook(game->render.window, 2, 1L << 0, handle_pressed, game);
-	mlx_hook(game->render.window, 3, 1L << 1, handle_released, game);
-	mlx_hook(game->render.window, 17, 1L << 17, close_window, game);
-	mlx_loop_hook(game->render.mlx, draw, game);
-	mlx_loop(game->render.mlx);
-	return (0);
+    if (ac != 2)
+        my_error(av);
+
+    init_game(&game);
+    if (!game)
+        return (printf("Error: Failed to initialize game\n"), 1);
+
+    parser(av[1], game);
+    if (parsing_map(game))
+        return (free_parse(game), 1);
+
+    init_render(game);
+    init_player(game);
+    init_map(game, game->map);
+
+    load_textures(game);
+
+    mlx_hook(game->render.window, 2, 1L << 0, handle_pressed, game);    // Key press event
+    mlx_hook(game->render.window, 3, 1L << 1, handle_released, game);  // Key release event
+    mlx_hook(game->render.window, 4, 1L << 2, handle_mouse_press, game);  // Mouse press event
+    mlx_hook(game->render.window, 5, 1L << 3, handle_mouse_release, game); // Mouse release event
+    mlx_hook(game->render.window, 17, 1L << 17, close_window, game); // Window close event
+
+    mlx_loop_hook(game->render.mlx, draw, game);
+    mlx_loop(game->render.mlx);
+
+    return (0);
 }
+

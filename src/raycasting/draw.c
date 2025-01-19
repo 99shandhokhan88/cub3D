@@ -45,6 +45,8 @@ void	render_floor_ceiling(unsigned int *img_data, t_colors *colors)
 	}
 }
 
+
+/*
 int	draw(t_game *game)
 {
 	t_render	*params;
@@ -64,4 +66,34 @@ int	draw(t_game *game)
 	draw_minimap(game);
 	mlx_put_image_to_window(params->mlx, params->window, params->img, 0, 0);
 	return (0);
+}
+*/
+
+int draw(t_game *game)
+{
+    t_render    *params;
+    int mouse_x, mouse_y;
+
+    params = &game->render;
+
+    if (!params || !params->mlx || !params->window || !params->img || !params->img_data)
+    {
+        printf("Error: Invalid parameters in draw function\n");
+        return (1);
+    }
+
+    // Get the current mouse position
+    mlx_mouse_get_pos(params->mlx, params->window, &mouse_x, &mouse_y);
+
+    // Check and rotate the player based on the mouse or key press
+    check_cursor_rotation(game, mouse_x);
+
+    move_player(game, params);
+    ft_bzero(params->img_data, SCREEN_WIDTH * SCREEN_HEIGHT * sizeof(unsigned int));
+    render_floor_ceiling(params->img_data, &game->colors);
+    raycasting(game, params);
+    draw_minimap(game);
+    mlx_put_image_to_window(params->mlx, params->window, params->img, 0, 0);
+
+    return (0);
 }

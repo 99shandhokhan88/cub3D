@@ -62,6 +62,7 @@ typedef struct s_key_press
 	bool	left;
 	bool	right;
 	bool	shift;
+	bool    mouse_pressed;
 }	t_key_press;
 
 typedef struct s_render
@@ -120,6 +121,12 @@ typedef struct s_wall_slice_data
 	t_texture	*curr_texture;
 }	t_wall_slice_data;
 
+int handle_mouse_press(int button, int x, int y, t_game *game);
+int handle_mouse_release(int button, int x, int y, t_game *game);
+
+
+int mouse_move(int x, int y, t_game *game);
+void    check_cursor_rotation(t_game *game, int mouse_x);
 int				handle_pressed(int key, t_game *game);
 int				handle_released(int key, t_game *game);
 int				move_player(t_game *game, t_render *params);
