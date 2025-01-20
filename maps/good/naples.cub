@@ -1,8 +1,8 @@
 
-NO ./texts/north_wall.xpm
-SO ./texts/south_wall.xpm
-WE ./texts/west_wall.xpm
-EA ./texts/east_wall.xpm
+NO ./textures/naples/mario.xpm
+SO ./textures/naples/yoshi.xpm
+WE ./textures/naples/sonic.xpm
+EA ./textures/naples/pika.xpm
 
 
 
