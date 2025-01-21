@@ -12,6 +12,26 @@
 
 #include "cub3D.h"
 
+/* 
+ * Function: raycasting
+ * --------------------
+ * This is the main function for raycasting, 
+ * which is responsible for casting rays 
+ * for each vertical column (screen x-coordinate) 
+ * and drawing the corresponding 
+ * wall slice based on the ray's intersection with a wall.
+ * 
+ * game: The game structure containing all the game data, 
+ * such as the map and player position.
+ * params: The render parameters including the image data 
+ * for drawing the final screen.
+ * 
+ * This function loops over all screen columns (from 0 to SCREEN_WIDTH), 
+ * calculates the corresponding ray for each column, performs the Digital 
+ * Differential Analyzer (DDA) algorithm to find wall intersections, 
+ * and draws the wall slice to the screen.
+ */
+
 void	raycasting(t_game *game, t_render *params)
 {
 	int		x;

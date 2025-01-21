@@ -12,6 +12,15 @@
 
 #include "cub3D.h"
 
+/*
+ * Checks the surrounding cells of a given map position (i, j) based on the 
+ * specified `kind` (UP, DOWN, LEFT, RIGHT). Determines if any of the adjacent 
+ * cells contain a '0', 'N', 'S', 'W', 'E' or the edge of the map, indicating 
+ * that the space is invalid for movement.
+ * Arguments: `map` (game map), `kind` (direction type), `i` (row), `j` (column).
+ * Returns: 1 if surrounding cells are valid (open space or player), 0 otherwise.
+ */
+
 int	around_checker(char **map, int kind, int i, int j)
 {
 	if (map[i][j] == '\0' || map[i][j] == '0'
@@ -34,6 +43,17 @@ int	around_checker(char **map, int kind, int i, int j)
 	}
 	return (0);
 }
+
+/*
+ * Recursively attempts to find a path
+ in the specified direction (UP, DOWN, LEFT, RIGHT).
+ * The function explores the map,
+ marking cells as '2' to prevent revisiting, 
+ * until it either finds an invalid area or reaches the edge of the map.
+ * Arguments: `i` (row), `j` (column), `map` (game map),
+ * `kind` (direction type).
+ * Returns: 1 if path is found, 0 if path is blocked.
+ */
 
 int	find_path(int i, int j, char **map, int kind)
 {
@@ -61,6 +81,17 @@ int	find_path(int i, int j, char **map, int kind)
 	return (0);
 }
 
+/*
+ * Checks if there is an open space
+ in the given direction (UP, DOWN, LEFT, RIGHT)
+ * from the specified position (`x`, `y`).
+ If there is an open space, an error message 
+ * is printed with the relevant error type.
+ * Arguments: `map` (game map), `x` (row), `y` (column), `type` (direction).
+ * Returns: 1 if an error is found (open space in an invalid position),
+ * 0 otherwise.
+ */
+
 int	check_correct_walls(char **map, int x, int y, int type)
 {
 	if (type == UP && find_path(x, y, map, type) == 1)
@@ -86,6 +117,13 @@ int	check_correct_walls(char **map, int x, int y, int type)
 	return (0);
 }
 
+/*
+ * Checks the right side of the map for any invalid open spaces by calling 
+ * `check_correct_walls` for the rightmost position of each row.
+ * Arguments: `copy_map` (game map).
+ * Returns: 1 if an error is found, 0 otherwise.
+ */
+
 int	right_check(char **copy_map)
 {
 	int	i;
@@ -105,6 +143,15 @@ int	right_check(char **copy_map)
 	}
 	return (0);
 }
+
+/*
+ * Performs a full border check on the map
+ to ensure all edges (up, down, left, right) 
+ * are properly enclosed by walls.
+ Calls `check_correct_walls` for each edge.
+ * Arguments: `copy_map` (game map).
+ * Returns: 1 if an error is found, 0 otherwise.
+ */
 
 int	border_check(char **copy_map)
 {

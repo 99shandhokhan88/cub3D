@@ -12,6 +12,24 @@
 
 #include "cub3D.h"
 
+/* 
+ * Function: main
+ * ----------------
+ * The entry point of the program that sets up the game, initializes necessary 
+ * components, and enters the game loop. The main function is responsible for 
+ * managing the initialization, input handling, and game execution.
+ *
+ * ac: The argument count passed from the command line.
+ * av: The argument vector (array of strings) passed from the command line.
+ * 
+ * Steps in the main function:
+ * 1. Checks if the user has passed the correct number of arguments.
+ * 2. Initializes the game, player, and map.
+ * 3. Loads the textures and sets up the rendering.
+ * 4. Hooks events for user input (keyboard and mouse).
+ * 5. Enters the main loop of the game, which repeatedly renders the game scene.
+ */
+
 int	main(int ac, char **av)
 {
 	t_game	*game;

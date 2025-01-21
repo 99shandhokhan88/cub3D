@@ -3,7 +3,7 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vzashev <vzashev@student.42roma.it>        +#+  +:+       +#+         #
+#    By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/21 21:36:49 by flo-dolc          #+#    #+#              #
 #    Updated: 2025/01/21 01:53:11 by vzashev          ###   ########.fr        #

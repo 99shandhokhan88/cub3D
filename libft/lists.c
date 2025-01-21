@@ -12,6 +12,19 @@
 
 #include "libft.h"
 
+/* 
+ * Functions to manage a linked list of `t_file` structures. 
+ * `list_new` creates a new node 
+ * with a `line` string and returns a pointer to it. 
+ * `list_last` traverses the list 
+ * to find and return the last node. 
+ * `list_add_back` appends 
+ * a new node to the end of the list. 
+ * It handles the case when the list is empty or non-empty. 
+ * Useful for managing dynamic collections 
+ * of strings or file-related data in a linked list structure. 
+ */
+
 t_file	*list_new(char *line)
 {
 	t_file	*new;

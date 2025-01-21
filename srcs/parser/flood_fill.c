@@ -12,6 +12,16 @@
 
 #include "cub3D.h"
 
+/*
+ * This recursive function performs a flood fill starting
+ from the given coordinates (row, col).
+ * It marks all connected empty spaces ('0')
+ with '3' to indicate visited/valid areas.
+ * Stops when encountering walls ('1') or already marked cells ('3').
+ * Arguments: game (game state), row (row index), col (column index).
+ * No return value (void function).
+ */
+
 void	flood_fill(t_game *game, int row, int col)
 {
 	if (game->map_copy[row][col] == '1' || game->map_copy[row][col] == '3')
@@ -22,6 +32,16 @@ void	flood_fill(t_game *game, int row, int col)
 	flood_fill(game, row, col - 1);
 	flood_fill(game, row, col + 1);
 }
+
+/*
+ * This function iterates through the map
+ and marks all empty spaces ('0', ' ', '\t') as '2'.
+ * It prepares the map by converting all empty/unvisited areas
+ into a distinct symbol ('2') 
+ * to help with validation or further processing.
+ * Arguments: game (game state).
+ * No return value (void function).
+ */
 
 void	check_flood(t_game *game)
 {

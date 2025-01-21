@@ -12,6 +12,21 @@
 
 #include "cub3D.h"
 
+/* 
+ * Functions to validate and analyze a map in the game. 
+ * `check_pos` checks if the player has been assigned
+ * a direction (N, S, E, W) for movement and validates invalid characters. 
+ * `corner_check` verifies if any corner of a specific
+ * position is empty (invalid space). 
+ * `is_empty` determines if a character is an invalid
+ * or non-wall character (' ', tab, '1', or newline). 
+ * `check_space_inside` checks if a space is surrounded
+ * by valid characters (walls or player direction). 
+ * `check_inside` iterates through the map
+ * to ensure proper player positioning and map validity,
+ * returning errors for invalid positions or spacing issues. 
+ */
+
 int	check_pos(char c, t_player_pars *player_pars)
 {
 	if (c == 'N' && player_pars->player_facing == 0)

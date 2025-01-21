@@ -12,6 +12,15 @@
 
 #include "cub3D.h"
 
+/*
+ * Initializes the map's height and width,
+ then performs a flood fill from the player's start position.
+ * It ensures that the game map is correctly populated
+ with valid paths and checks for empty spaces.
+ * Arguments: game (game state), map (map object to be initialized).
+ * No return value (void function).
+ */
+
 void	init_map_part_1(t_game *game, t_map *map)
 {
 	map->height = matrix_len(game->map_copy);
@@ -19,6 +28,15 @@ void	init_map_part_1(t_game *game, t_map *map)
 	flood_fill(game, game->pos_y, game->pos_x);
 	check_flood(game);
 }
+
+/*
+ * Allocates and initializes the grid representation
+ of the map based on the map copy.
+ * It converts '1' to walls and '2' to empty spaces,
+ filling the grid with appropriate values.
+ * Arguments: game (game state), map (map object to be initialized).
+ * No return value (void function).
+ */
 
 void	init_map_part_2(t_game *game, t_map *map)
 {
@@ -45,6 +63,15 @@ void	init_map_part_2(t_game *game, t_map *map)
 		i++;
 	}
 }
+
+/*
+ * Calls both parts
+ of the map initialization (init_map_part_1 and init_map_part_2) in sequence.
+ * It performs the necessary setup to prepare the game map
+ * for further gameplay processing.
+ * Arguments: game (game state), map (map object to be initialized).
+ * No return value (void function).
+ */
 
 void	init_map(t_game *game, t_map *map)
 {

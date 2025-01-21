@@ -12,6 +12,19 @@
 
 #include "cub3D.h"
 
+/* 
+ * Function: check_file
+ * ---------------------
+ * Checks if the given file has the correct name and extension.
+ * The file must end with ".cub".
+ *
+ * game: The game structure (for error handling).
+ * file: The file path to check.
+ * 
+ * This function exits the program
+ * if the file name or extension is incorrect.
+ */
+
 void	check_file(t_game *game, char *file)
 {
 	char	*file_checker;
@@ -32,6 +45,16 @@ void	check_file(t_game *game, char *file)
 		exit(EXIT_FAILURE);
 	}
 }
+
+/* 
+ * Function: check_cub
+ * --------------------
+ * Reads the map file and stores its contents in a linked list.
+ * It skips any empty lines at the beginning of the file.
+ *
+ * mat: Pointer to the linked list that will hold the map data.
+ * file: The file path to read.
+ */
 
 void	check_cub(t_file **mat, char *file)
 {
@@ -56,6 +79,18 @@ void	check_cub(t_file **mat, char *file)
 	}
 	close(fd);
 }
+
+/* 
+ * Function: back_slash_trimmer
+ * -----------------------------
+ * This function removes empty lines at the beginning
+ * of the file or trims
+ * unnecessary lines before the first line with '1'.
+ * 
+ * file: The linked list of lines to trim.
+ * Returns: 0 if trimming is successful,
+ * 1 if the file is empty or the last line.
+ */
 
 int	back_slash_trimmer(t_file *file)
 {
@@ -86,6 +121,15 @@ int	back_slash_trimmer(t_file *file)
 	return (0);
 }
 
+/* 
+ * Function: size_lst
+ * -------------------
+ * Calculates the number of nodes (lines) in the linked list.
+ *
+ * lst: The linked list whose size is to be calculated.
+ * Returns: The size of the list (number of nodes).
+ */
+
 int	size_lst(t_file *lst)
 {
 	int	check;
@@ -98,6 +142,21 @@ int	size_lst(t_file *lst)
 	}
 	return (check);
 }
+
+/* 
+ * Function: init_pars_check
+ * ---------------------------
+ * This function performs basic checks
+ * on the map file. It verifies if the file
+ * is empty and ensures that the file
+ * has enough lines (at least 9).
+ *
+ * game: The game structure (for error handling).
+ * file: The linked list containing the map data.
+ * 
+ * If the file is empty or too small,
+ * it triggers an error and terminates the program.
+ */
 
 void	init_pars_check(t_game *game, t_file *file)
 {

@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   init_rend.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzashev <vzashev@student.42roma.it>        +#+  +:+       +#+        */
+/*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 14:59:39 by flo-dolc           #+#    #+#             */
+/*   Created: 2024/10/03 14:59:39 by flo-dolc          #+#    #+#             */
 /*   Updated: 2025/01/21 01:35:31 by vzashev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+/*
+ * Initializes the graphics for rendering the game using the mlx library.
+ * This includes setting up mlx, creating a window, an image, and retrieving 
+ * the image data address for drawing.
+ * Arguments: init_game (game state structure).
+ * Returns: 0 on success, exits with error message on failure.
+ */
 
 int	init_render_graphics(t_game *init_game)
 {
@@ -34,6 +42,14 @@ int	init_render_graphics(t_game *init_game)
 	return (0);
 }
 
+/*
+ * Initializes the key states and rendering settings
+ like pixel size, line size,
+ * and other configurations related to input handling.
+ * Arguments: init_game (game state structure).
+ * No return value (void function).
+ */
+
 void	init_render_keys_and_settings(t_game *init_game)
 {
 	init_game->render.bits_per_pixel = 32;
@@ -47,6 +63,14 @@ void	init_render_keys_and_settings(t_game *init_game)
 	init_game->render.keys.right = false;
 	init_game->render.keys.shift = false;
 }
+
+/*
+ * Initializes both the rendering graphics
+ and key settings by calling the
+ * respective initialization functions.
+ * Arguments: init_game (game state structure).
+ * No return value (void function).
+ */
 
 void	init_render(t_game *init_game)
 {

@@ -12,6 +12,18 @@
 
 #include "cub3D.h"
 
+/* 
+ * Function: calculate_wall_slice_dimensions
+ * -----------------------------------------
+ * This function calculates the vertical slice of the wall that will be drawn
+ * on the screen for the current ray. It determines the height of the slice
+ * and the range of pixels that will be affected by this slice (starting and 
+ * ending pixel positions).
+ * 
+ * ray: The current ray being casted.
+ * data: A structure to hold the slice data (height, start, end, etc.).
+ */
+
 void	calculate_wall_slice_dimensions(t_ray *ray, t_wall_slice_data *data)
 {
 	data->line_height = (int)(SCREEN_HEIGHT / ray->perp_wall_dist) * 1.2;
@@ -23,6 +35,19 @@ void	calculate_wall_slice_dimensions(t_ray *ray, t_wall_slice_data *data)
 		data->draw_end = SCREEN_HEIGHT - 1;
 }
 
+/* 
+ * Function: calculate_wall_x
+ * -------------------------
+ * This function calculates the exact point (x-coordinate) on the wall that 
+ * the ray intersects. It uses the perpendicular distance from the player 
+ * to determine this.
+ * 
+ * game: The game structure, containing the player's position.
+ * ray: The current ray.
+ * 
+ * Returns: The fractional x-coordinate of the intersection on the wall.
+ */
+
 double	calculate_wall_x(t_game *game, t_ray *ray)
 {
 	double	wall_x;
@@ -33,6 +58,18 @@ double	calculate_wall_x(t_game *game, t_ray *ray)
 		wall_x = game->pos_y + ray->perp_wall_dist * ray->ray_dir_x;
 	return (wall_x - floor(wall_x));
 }
+
+/* 
+ * Function: select_wall_texture
+ * -----------------------------
+ * This function selects the correct texture for the wall the ray hits, based 
+ * on which side of the grid the ray intersects (north, south, east, west).
+ * 
+ * game: The game structure, containing the textures.
+ * ray: The current ray.
+ * 
+ * Returns: A pointer to the correct texture to use for drawing the wall slice.
+ */
 
 t_texture	*select_wall_texture(t_game *game, t_ray *ray)
 {
@@ -50,6 +87,24 @@ t_texture	*select_wall_texture(t_game *game, t_ray *ray)
 	}
 }
 
+/* 
+ * Function: calculate_tex_x
+ * -------------------------
+ * This function calculates the correct 
+ * x-coordinate on the texture that 
+ * corresponds to the current ray 
+ * hit position on the wall. This is necessary
+ * to ensure that the texture 
+ * is mapped correctly on the wall slice.
+ * 
+ * data: The wall slice data, 
+ * containing the wall x-coordinate.
+ * ray: The current ray.
+ * 
+ * Returns: The x-coordinate 
+ * on the texture to sample.
+ */
+
 int	calculate_tex_x(t_wall_slice_data *data, t_ray *ray)
 {
 	int	tex_x;
@@ -60,6 +115,22 @@ int	calculate_tex_x(t_wall_slice_data *data, t_ray *ray)
 		tex_x = data->curr_texture->width - tex_x - 1;
 	return (tex_x);
 }
+
+/* 
+ * Function: draw_wall_slice
+ * -------------------------
+ * This function draws a vertical slice 
+ * of the wall at the current screen 
+ * column (`x`) using the selected texture. 
+ * It samples the texture and applies
+ * the calculated shading based on the ray hit point.
+ * 
+ * game: The game structure, 
+ * containing the current rendering context.
+ * ray: The current ray.
+ * x: The screen column where the wall slice is drawn.
+ * y: The starting vertical position of the wall slice.
+ */
 
 void	draw_wall_slice(t_game *game, t_ray *ray, int x, int y)
 {

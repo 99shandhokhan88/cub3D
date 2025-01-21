@@ -12,6 +12,17 @@
 
 #include "libft.h"
 
+/* 
+ * Converts a string to an integer (ASCII to integer). 
+ * Takes a string `str` as input and processes leading whitespace, 
+ * an optional sign (+/-), 
+ * and numerical digits to calculate the integer value. 
+ * Returns the resulting integer, considering the sign. 
+ * Handles edge cases like non-numeric characters gracefully
+ * by stopping conversion. 
+ * Assumes input is well-formed and does not handle overflow explicitly.
+ */
+
 int	ft_atoi(const char *str)
 {
 	int	i;

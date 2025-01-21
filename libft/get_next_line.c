@@ -12,6 +12,19 @@
 
 #include "libft.h"
 
+/* 
+ * Reads a line from a file descriptor (FD) into a buffer. 
+ * The `get_next_line_map` function handles the core logic, 
+ * maintaining static storage for unprocessed data between calls. 
+ * It uses helper functions like `set_char` to check 
+ * for newline characters, `put_stash` to read more data 
+ * from the file if needed, 
+ * `get_line` to extract the current line from the accumulated buffer, 
+ * and `rest_stash` to store any remaining characters for the next read. 
+ * Returns a line from the file each time it is called, 
+ * or NULL when no more data is available or an error occurs. 
+ */
+
 int	set_char(char *str)
 {
 	int	i;

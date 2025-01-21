@@ -12,6 +12,18 @@
 
 #include "libft.h"
 
+/* 
+ * Locates the last occurrence of a character in a string. 
+ * Takes a string `str` and a character `ch` (as an integer) 
+ * to search for. 
+ * Iterates through the string and stores the pointer 
+ * to the last occurrence of `ch`. 
+ * Returns a pointer to the last occurrence of `ch` 
+ * in the string, or NULL if `ch` is not found. 
+ * Useful for reverse searches or handling 
+ * the last appearance of a character in a string. 
+ */
+
 char	*ft_strrchr(const char *str, int ch)
 {
 	int		i;

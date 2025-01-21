@@ -12,6 +12,16 @@
 
 #include "cub3D.h"
 
+/*
+ * This function checks for a specific direction (NO, SO, WE, EA)
+ in the file line.
+ * If the direction is found, it extracts the path string
+ after the direction and stores it in the corresponding texture path.
+ * Returns 1 if the direction is found and processed, otherwise 0.
+ * Arguments: game (game state), file (line of the configuration file),
+ * dir (direction string), path (pointer to store path).
+ */
+
 int	direction(t_game *game, t_file *file, char *dir, char **path)
 {
 	int	i;
@@ -41,6 +51,16 @@ int	direction(t_game *game, t_file *file, char *dir, char **path)
 	return (0);
 }
 
+/*
+ * This function fills the ceiling color values (red, green, blue)
+ from the file line.
+ * It performs bounds checking and ensures the values
+ are valid RGB values between 0 and 255.
+ * Arguments: game (game state), file (line of the configuration file),
+ index (pointer to the position in the line).
+ * Returns 0 after successfully filling the ceiling color.
+ */
+
 int	fill_ceiling(t_game *game, t_file *file, int *index)
 {
 	game->colors.ceiling.r = ft_atoi(&file->line[*index]);
@@ -60,6 +80,16 @@ int	fill_ceiling(t_game *game, t_file *file, int *index)
 	return (0);
 }
 
+/*
+ * Similar to `fill_ceiling`,
+ this function fills the floor color values (red, green, blue)
+ from the file line.
+ * It performs bounds checking to ensure the values are valid RGB values.
+ * Arguments: game (game state), file (line of the configuration file),
+ * index (pointer to the position in the line).
+ * Returns 0 after successfully filling the floor color.
+ */
+
 int	fill_floor(t_game *game, t_file *file, int *index)
 {
 	game->colors.floor.r = ft_atoi(&file->line[*index]);
@@ -78,6 +108,18 @@ int	fill_floor(t_game *game, t_file *file, int *index)
 		parser_errors(game, "wrong blue code (f)");
 	return (0);
 }
+
+/*
+ * This function handles the background color setup
+ for either the ceiling or the floor.
+ * It checks if the background has been previously set,
+ then calls either `fill_ceiling`
+ or `fill_floor` based on the platform type ('C' for ceiling, 'F' for floor).
+ * Arguments: game (game state),
+ file (line of the configuration file), platform (either 'F' or 'C'),
+ flag (to track if background is set).
+ * Returns 1 if background is successfully set, otherwise 0.
+ */
 
 int	background_fill(t_game *game, t_file *file, char platform, int *flag)
 {
@@ -106,6 +148,15 @@ int	background_fill(t_game *game, t_file *file, char platform, int *flag)
 	}
 	return (0);
 }
+
+/*
+ * This function processes the entire configuration file
+ and fills in the relevant structures in the game.
+ * It checks for the presence of texture paths
+ for all four directions and ceiling/floor colors.
+ * Arguments: game (game state), file (linked list of file lines).
+ * It exits the program with an error if anything is missing or invalid.
+ */
 
 void	struct_filler(t_game *game, t_file *file)
 {

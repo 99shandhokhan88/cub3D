@@ -12,6 +12,14 @@
 
 #include "cub3D.h"
 
+/*
+ * Allocates memory for the game structure (`t_game`) and its map substructure
+ * (`t_map`). If memory allocation fails for either, the function frees any 
+ * already allocated memory and sets the `game` pointer to NULL.
+ * Arguments: `game` (pointer to the game structure).
+ * Returns: None, modifies the `game` pointer directly.
+ */
+
 void	init_game(t_game **game)
 {
 	*game = (t_game *)ft_calloc(1, sizeof(t_game));
@@ -25,6 +33,16 @@ void	init_game(t_game **game)
 		return ;
 	}
 }
+
+/*
+ * Searches the parsed map
+ for the player's initial position (denoted by 'N', 'S', 'E', or 'W')
+ * and sets the `pos_x` and `pos_y` coordinates accordingly.
+ The player's position is stored
+ * with a fractional value (e.g., 0.5) to represent the center of the player.
+ * Arguments: `game` (game structure with parsed map).
+ * Returns: None.
+ */
 
 void	find_player_position(t_game *game)
 {
@@ -51,6 +69,17 @@ void	find_player_position(t_game *game)
 		i++;
 	}
 }
+
+/*
+ * Initializes the player's direction (`dir_x`, `dir_y`)
+ and the camera plane 
+ * (`plane_x`, `plane_y`) based on the player's initial facing direction. 
+ * Uses the `player_facing` value (NORTH, SOUTH, EAST, WEST)
+ * to set the correct 
+ * movement and camera plane orientation.
+ * Arguments: `init_player` (game structure with player data).
+ * Returns: None.
+ */
 
 void	init_player(t_game *init_player)
 {

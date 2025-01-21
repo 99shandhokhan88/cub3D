@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   map_pars.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzashev <vzashev@student.42roma.it>        +#+  +:+       +#+        */
+/*   By: flo-dolc <flo-dolc@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 22:01:47 by flo-dolc           #+#    #+#             */
+/*   Created: 2025/01/10 22:01:47 by flo-dolc          #+#    #+#             */
 /*   Updated: 2025/01/21 01:47:20 by vzashev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+/* 
+ * Function: parsing_map
+ * ----------------------
+ * This function is responsible for parsing
+ * the map stored in `game->parsed_map`,
+ * creating a copy of it (`game->map_copy`),
+ * and performing various validation 
+ * checks such as player position,
+ * invalid spaces inside the map, and border walls.
+ * If any errors occur during parsing,
+ * appropriate error messages are printed.
+ *
+ * game: The game structure containing
+ * the map and player parsing information.
+ * Returns: 1 if there is an error,
+ * 0 if parsing is successful.
+ */
 
 int	parsing_map(t_game *game)
 {
