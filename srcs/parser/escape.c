@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vzashev <vzashev@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 19:32:03 by vzashev           #+#    #+#             */
-/*   Updated: 2025/01/20 23:17:38 by vzashev          ###   ########.fr       */
+/*   Created: 2024/08/13 12:11:40 by vzashev           #+#    #+#             */
+/*   Updated: 2025/01/21 01:34:08 by vzashev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	my_error(char **av)
 {
-	printf(RED BOLD "Error: wrong arguments (ac != 2)!" RESET);
+	printf(RED BOLD "Error: wrong arguments (ac != 2)!\n" RESET);
 	printf("Usage: %s <filename>.cub\n", av[0]);
 	exit(1);
 }

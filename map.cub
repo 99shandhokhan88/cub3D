@@ -1,8 +1,8 @@
 
-NO ./texts/north_wall.xpm
-SO ./texts/south_wall.xpm
-WE ./texts/west_wall.xpm
-EA ./texts/east_wall.xpm
+NO ./textures/north_wall.xpm
+SO ./textures/south_wall.xpm
+WE ./textures/west_wall.xpm
+EA ./textures/east_wall.xpm
 
 
 

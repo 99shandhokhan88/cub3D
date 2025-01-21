@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prepare_texture_sampling.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vzashev <vzashev@student.42roma.it>        +#+  +:+       +#+        */
+/*   By: flo-dolc <flo-dolc@student.42roma.it>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 19:48:33 by vzashev           #+#    #+#             */
-/*   Updated: 2025/01/20 19:48:34 by vzashev          ###   ########.fr       */
+/*   Created: 2024/11/16 23:14:27 by flo-dolc           #+#    #+#             */
+/*   Updated: 2025/01/21 01:40:07 by vzashev          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
