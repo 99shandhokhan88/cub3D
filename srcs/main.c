@@ -42,7 +42,7 @@ int	main(int ac, char **av)
 	parser(av[1], game);
 	if (parsing_map(game))
 		return (free_parser(game), 1);
-	init_render(game);
+	init_render(&game->render);
 	init_player(game);
 	init_map(game, game->map);
 	load_textures(game);

@@ -16,28 +16,28 @@
  * Initializes the graphics for rendering the game using the mlx library.
  * This includes setting up mlx, creating a window, an image, and retrieving 
  * the image data address for drawing.
- * Arguments: init_game (game state structure).
+ * Arguments: init_rend (render state structure).
  * Returns: 0 on success, exits with error message on failure.
  */
 
-int	init_render_graphics(t_game *init_game)
+int	init_render_graphics(t_render *init_rend)
 {
-	init_game->render.mlx = mlx_init();
-	if (!init_game->render.mlx)
+	init_rend->mlx = mlx_init();
+	if (!init_rend->mlx)
 		exit (printf("Error: failed to initialize mlx!\n"));
-	init_game->render.window = mlx_new_window(init_game->render.mlx,
+	init_rend->window = mlx_new_window(init_rend->mlx,
 			SCREEN_WIDTH, SCREEN_HEIGHT, "cub3D");
-	if (!init_game->render.window)
+	if (!init_rend->window)
 		exit (printf("Error: failed to create new window!\n"));
-	init_game->render.img = mlx_new_image(init_game->render.mlx,
+	init_rend->img = mlx_new_image(init_rend->mlx,
 			SCREEN_WIDTH, SCREEN_HEIGHT);
-	if (!init_game->render.img)
+	if (!init_rend->img)
 		exit (printf("Error: failed to create new image!\n"));
-	init_game->render.img_data
-		= (unsigned int *)mlx_get_data_addr(init_game->render.img,
-			&init_game->render.bits_per_pixel,
-			&init_game->render.size_line, &init_game->render.endian);
-	if (!init_game->render.img_data)
+	init_rend->img_data
+		= (unsigned int *)mlx_get_data_addr(init_rend->img,
+			&init_rend->bits_per_pixel,
+			&init_rend->size_line, &init_rend->endian);
+	if (!init_rend->img_data)
 		exit (printf("Error: failed to get image data address!\n"));
 	return (0);
 }
@@ -46,34 +46,35 @@ int	init_render_graphics(t_game *init_game)
  * Initializes the key states and rendering settings
  like pixel size, line size,
  * and other configurations related to input handling.
- * Arguments: init_game (game state structure).
+ * Arguments: init_rend (render state structure).
  * No return value (void function).
  */
 
-void	init_render_keys_and_settings(t_game *init_game)
+void	init_render_keys_and_settings(t_render *init_rend)
 {
-	init_game->render.bits_per_pixel = 32;
-	init_game->render.size_line = SCREEN_WIDTH * 4;
-	init_game->render.endian = 0;
-	init_game->render.keys.a = false;
-	init_game->render.keys.d = false;
-	init_game->render.keys.s = false;
-	init_game->render.keys.w = false;
-	init_game->render.keys.left = false;
-	init_game->render.keys.right = false;
-	init_game->render.keys.shift = false;
+	init_rend->bits_per_pixel = 32;
+	init_rend->size_line = SCREEN_WIDTH * 4;
+	init_rend->endian = 0;
+	init_rend->keys.a = false;
+	init_rend->keys.d = false;
+	init_rend->keys.s = false;
+	init_rend->keys.w = false;
+	init_rend->keys.left = false;
+	init_rend->keys.right = false;
+	init_rend->keys.shift = false;
+	init_rend->keys.mouse_pressed = false;
 }
 
 /*
  * Initializes both the rendering graphics
  and key settings by calling the
  * respective initialization functions.
- * Arguments: init_game (game state structure).
+ * Arguments: init_render (render state structure).
  * No return value (void function).
  */
 
-void	init_render(t_game *init_game)
+void	init_render(t_render *init_rend)
 {
-	init_render_graphics(init_game);
-	init_render_keys_and_settings(init_game);
+	init_render_graphics(init_rend);
+	init_render_keys_and_settings(init_rend);
 }
